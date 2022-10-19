@@ -5,7 +5,7 @@ const MainStyle = styled.div`
   padding-bottom: 90px;
   width: 100vw;
   min-height: 100vw;
-  background-color: #e5e5e5;
+  background-color: #F2F2F2;
 `;
 
 export default MainStyle;
