@@ -1,9 +1,10 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import logo from "../../assets/img/logo.png";
 import { useNavigate } from "react-router-dom";
+import MyContext from "../../context/MyContext.js"
 
 function LoginPage() {
   const navigate = useNavigate();
@@ -11,6 +12,7 @@ function LoginPage() {
   let [password, setPassword] = useState("");
   let [token, setToken] = useState("");
   let [onload, setOnload] = useState(false);
+  const teste = useContext(MyContext)
 
   let body = {
     email: email,
@@ -39,7 +41,7 @@ function LoginPage() {
 
   return (
     <LoginStyle>
-      <img src={logo} alt="logo" />
+      <img src={logo} alt="logo" onClick={()=>  alert(teste)}/>
       <form onSubmit={sendData}>
         <input
           name="email"
