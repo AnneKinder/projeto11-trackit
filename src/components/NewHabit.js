@@ -1,14 +1,14 @@
 import styled from "styled-components";
+import WEEKDAYS from "../constants/WEEKDAYS.js"
 
 export default function NewHabit() {
-  const WEEKDAYS = ["D", "S", "T", "Q", "Q", "S", "S"];
-
+  
   return (
     <NewHabitSty>
       <input type="text" name="habit" placeholder="nome do hábito" />
       <div className="weekday-container">
         {WEEKDAYS.map((wd, id) => (
-          <div className="weekday">{wd}</div>
+          <div className="weekday" key={id}>{wd}</div>
         ))}
       </div>
       <button className="cancel">Cancelar</button>

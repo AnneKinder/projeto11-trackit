@@ -1,31 +1,29 @@
 import styled from "styled-components";
-import TextSty from "../assets/styles/TextSty"
-import { IonIcon } from "@ionic/react"
+import TextSty from "../assets/styles/TextSty";
+import { IonIcon } from "@ionic/react";
+import WEEKDAYS from "../constants/WEEKDAYS.js"
 
 export default function Habit() {
-
-  const WEEKDAYS = ["D", "S", "T", "Q", "Q", "S", "S"];
-
+  
 
   return (
-  <HabitSty>
-    <div className="habit-top">
-    <TextSty> Título do hábito</TextSty>
-    <div className="trashcan">
-    <IonIcon icon="trash-outline"/>
-    </div>
-    
-    </div>
-    
-    <div className="weekday-container">
+    <HabitSty>
+      <div className="habit-top">
+        <TextSty> Título do hábito</TextSty>
+        <div className="trashcan">
+          <IonIcon icon="trash-outline" />
+        </div>
+      </div>
+
+      <div className="weekday-container">
         {WEEKDAYS.map((wd, id) => (
-          <div className="weekday">{wd}</div>
+          <div className="weekday" key={id}>{wd}</div>
         ))}
       </div>
-      
-  </HabitSty>
 
-)}
+    </HabitSty>
+  );
+}
 
 const HabitSty = styled.div`
   width: 340px;
@@ -60,10 +58,9 @@ const HabitSty = styled.div`
     margin: 10px 5px 0 0;
   }
 
-  .habit-top{
+  .habit-top {
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
-
 `;
