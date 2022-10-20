@@ -1,10 +1,14 @@
+import { renderMatches } from "react-router-dom";
 import styled from "styled-components";
 import pic from "../assets/img/nyra.jpeg";
+import { useNavigate } from "react-router-dom";
 
 export default function NavBar() {
+  const navigate = useNavigate();
+
   return (
     <NavbarStyle>
-      <p>TrackIt</p>
+      <p onClick={() => navigate("/")}>TrackIt</p>
       <img src={pic} alt="pic" />
     </NavbarStyle>
   );

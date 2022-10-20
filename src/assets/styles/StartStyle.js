@@ -13,7 +13,11 @@ const StartStyle = styled.div`
   img {
     width: 280px;
   }
-
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  }
   input {
     box-sizing: border-box;
     width: 303px;

@@ -3,16 +3,66 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import logo from "../../assets/img/logo.png";
-import StartStyle from "../../assets/styles/StartStyle.js";
+import { useNavigate } from "react-router-dom";
 
 function LoginPage() {
+  const navigate = useNavigate();
+  let [email, setMail] = useState("");
+  let [password, setPassword] = useState("");
+  let [token, setToken] = useState("");
+  let [onload, setOnload] = useState(false);
+
+  let body = {
+    email: email,
+    password: password
+  };
+
+  function sendData(e) {
+    e.preventDefault();
+
+    axios
+      .post(
+        "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login",
+        body
+      )
+      .then((res) => {
+        setToken(res.data.token);
+        navigate("/habitos");
+        setOnload(true);
+      })
+      .catch((err) => console.log(err.response.data));
+  }
+
+  if (onload) {
+    alert("loaddd");
+  }
+
   return (
     <LoginStyle>
       <img src={logo} alt="logo" />
-      <input name="email" type="text" placeholder="email" />
-      <input name="senha" type="text" placeholder="senha" />
-      <button> Entrar </button>
-      <p> Não tem uma conta? Cadastre-se! </p>
+      <form onSubmit={sendData}>
+        <input
+          name="email"
+          type="email"
+          placeholder="email"
+          value={email}
+          onChange={(e) => setMail(e.target.value)}
+          required
+        />
+        <input
+          name="senha"
+          type="password"
+          placeholder="senha"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+        <button type="submit"> Entrar </button>
+      </form>
+      <p onClick={() => navigate("/cadastro")}>
+        {" "}
+        Não tem uma conta? Cadastre-se!{" "}
+      </p>
     </LoginStyle>
   );
 }
@@ -31,6 +81,10 @@ const LoginStyle = styled.div`
     width: 280px;
   }
 
+  form {
+    display: flex;
+    flex-direction: column;
+  }
   input {
     box-sizing: border-box;
     width: 303px;
@@ -43,7 +97,7 @@ const LoginStyle = styled.div`
     font-weight: 400;
     font-size: 19.976px;
     line-height: 25px;
-    color: #dbdbdb;
+    color: #2d3133;
     padding: 10px;
     margin-bottom: 8px;
   }
