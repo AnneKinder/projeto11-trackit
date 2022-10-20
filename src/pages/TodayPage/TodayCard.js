@@ -1,16 +1,17 @@
 import styled from "styled-components";
 import TextSty from "../../assets/styles/TextSty";
 import { IonIcon } from "@ionic/react";
+import { useState } from "react";
 
 export default function TodayCard() {
-  const today = { day: "Segunda", date: "17/10" };
-  let sequence = "5";
-  let record = "7";
+  let [sequence, setSequence] = useState("2");
+  let [record, setRecord] = useState("5");
+  let titulo = "titulo do hábito"
 
   return (
     <TodayCardSty>
       <div className="left">
-        <TextSty> io </TextSty>
+        <TextSty> {titulo}</TextSty>
         <div className="info"> Sequência atual: {sequence} dias</div>
         <div className="info"> Seu recorde: {record} dias</div>
       </div>
@@ -24,7 +25,7 @@ export default function TodayCard() {
 const TodayCardSty = styled.div`
   display: flex;
   justify-content: space-between;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   width: 340px;
   height: 94px;
   left: 18px;

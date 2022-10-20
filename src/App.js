@@ -17,9 +17,9 @@ function App() {
         <Routes>
           {/* <Route path="/" element={<LoginPage />} />
           <Route path="/" element={<SignUpPage />} /> 
-          <Route path="/" element={<HabitsPage />} /> */}
-          <Route path="/" element={<TodayPage />} />
-          {/* <Route path="/" element={<HistoryPage />} /> */}
+          <Route path="/" element={<HabitsPage />} /> 
+          <Route path="/" element={<TodayPage />} />*/}
+          <Route path="/" element={<HistoryPage />} />
         </Routes>
       </BrowserRouter>
     </>
