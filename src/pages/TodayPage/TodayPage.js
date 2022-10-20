@@ -4,6 +4,7 @@ import Footer from "../../components/Footer.js";
 import ScreenStyle from "../../assets/styles/ScreenStyle.js";
 import MainStyle from "../../assets/styles/MainStyle.js";
 import TodayBar from "./TodayBar.js";
+import TodayCard from "./TodayCard.js";
 
 function TodayPage() {
   return (
@@ -12,6 +13,7 @@ function TodayPage() {
       <MainStyle>
         <FeedSty>
       <TodayBar/>
+      <TodayCard/>
         </FeedSty>
         <Footer />
       </MainStyle>

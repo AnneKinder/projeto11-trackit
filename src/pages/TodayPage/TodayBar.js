@@ -16,7 +16,6 @@ export default function TodayBar() {
 }
 
 const TodayBarSty = styled.div`
-  box-sizing: border-box;
   height: 70px;
   width: 340px;
   display: flex;
