@@ -15,11 +15,11 @@ function App() {
         <GlobalStyle />
 
         <Routes>
-          {/* <Route path="/" element={<LoginPage />} />
-          <Route path="/" element={<SignUpPage />} /> */}
-          <Route path="/" element={<HabitsPage />} /> 
-           {/*<Route path="/" element={<TodayPage />} />
-          <Route path="/" element={<HistoryPage />} />  */}
+           <Route path="/" element={<LoginPage />} />
+         {/* <Route path="/cadastro" element={<SignUpPage />} /> 
+          <Route path="/habitos" element={<HabitsPage />} /> 
+           <Route path="/hoje" element={<TodayPage />} />
+          <Route path="/historico" element={<HistoryPage />} />  */}
         </Routes>
       </BrowserRouter>
     </>
