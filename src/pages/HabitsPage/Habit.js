@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import TextSty from "../assets/styles/TextSty";
+import TextSty from "../../assets/styles/TextSty.js"
 import { IonIcon } from "@ionic/react";
-import WEEKDAYS from "../constants/WEEKDAYS.js"
+import WEEKDAYS from "../../constants/WEEKDAYS.js"
 
 export default function Habit() {
   

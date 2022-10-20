@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import WEEKDAYS from "../constants/WEEKDAYS.js"
+import WEEKDAYS from "../../constants/WEEKDAYS.js"
 
 export default function NewHabit() {
   
