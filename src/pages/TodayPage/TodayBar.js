@@ -24,7 +24,8 @@ const TodayBarSty = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 0 20px;
+  padding: 0 2px;
+  margin: 8px 0;
   font-family: "Lexend Deca";
 
 `;
