@@ -33,6 +33,8 @@ const HabitSty = styled.div`
   border-radius: 5px;
   box-sizing: border-box;
   padding: 15px;
+  margin-top: 30px;
+  box-shadow: 0px 1px 4px 1px rgba(0,0,0,0.15);
 
   .weekday-container {
     width: 300px;

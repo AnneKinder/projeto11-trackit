@@ -38,5 +38,6 @@ const AddBarSty = styled.div`
     font-size: 26.976px;
     color: #ffffff;
     margin-left: 130px;
+    box-shadow: 0px 1px 4px 1px rgba(0,0,0,0.15);
   }
 `;

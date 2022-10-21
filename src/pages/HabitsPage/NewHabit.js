@@ -112,7 +112,7 @@ const NewHabitSty = styled.div`
   left: 17px;
   top: 147px;
   border-radius: 5px;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+  box-shadow: 0px 1px 4px 1px rgba(0,0,0,0.15);
 
   input {
     box-sizing: border-box;
