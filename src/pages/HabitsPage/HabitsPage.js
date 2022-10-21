@@ -9,7 +9,8 @@ import ScreenStyle from "../../assets/styles/ScreenStyle.js";
 import MainStyle from "../../assets/styles/MainStyle.js";
 import ImageContext from "../../context/ImageContext.js";
 
-function HabitsPage() {
+function HabitsPage(props) {
+  const {userImage} = props
   // let [userImage, setUserImage] = useContext(ImageContext)
   function AddHabit(){
     alert("ok")
@@ -17,7 +18,7 @@ function HabitsPage() {
   return (
     <ScreenStyle>
       {/* <ImageContext.Provider value={{userImage, setUserImage}}> */}
-      <NavBar />
+      <NavBar userImage={userImage}/>
       {/* </ImageContext.Provider> */}
       <MainStyle>
         <AddBar AddHabit={AddHabit} />

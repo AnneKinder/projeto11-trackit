@@ -10,7 +10,7 @@ import {useState} from "react"
 
 function App() {
 
-
+let [userImage, setUserImage] = useState("")
 
   return (
     <>
@@ -18,8 +18,8 @@ function App() {
         <GlobalStyle />
           <Routes>
             <Route path="/" element={<LoginPage />} />
-            <Route path="/cadastro" element={<SignUpPage />} />
-            <Route path="/habitos" element={<HabitsPage />} />
+            <Route path="/cadastro" element={<SignUpPage setUserImage={setUserImage}/>} />
+            <Route path="/habitos" element={<HabitsPage userImage={userImage}/>} />
             <Route path="/hoje" element={<TodayPage />} />
             <Route path="/historico" element={<HistoryPage />} />
           </Routes>

@@ -5,13 +5,12 @@ import axios from "axios";
 import logo from "../../assets/img/logo.png";
 import StartStyle from "../../assets/styles/StartStyle.js";
 import { useNavigate } from "react-router-dom";
-import MyContext from "../../context/MyContext.js"
 
-function SignUpPage() {
+function SignUpPage(props) {
+  const {setUserImage} = props
 
   const navigate = useNavigate();
 
-  const {userImage, setUserImage} = useContext(MyContext)
   
   let [onload, setOnload] = useState(false);
   let [disabled, setDisabled] = useState("")
