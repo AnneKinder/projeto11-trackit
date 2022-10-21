@@ -1,9 +1,11 @@
 import styled from "styled-components";
 import BlueTitle from "../../assets/styles/BlueTitle.js";
 
-export default function AddBar() {
+export default function AddBar(props) {
+  const {setIsOpen} = props
+
   function AddHabit() {
-    alert("novo");
+    setIsOpen(true)
   }
 
   return (

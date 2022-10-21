@@ -9,6 +9,20 @@ export default function NewHabit(props) {
   let [newTitle, setNewTitle] = useState("");
   let [newHabitDays, setnewHabitDays] = useState([]);
   let [dayColor, setDayColor] = useState("#ffffff");
+  let [isOpen, setIsOpen] = useState(false)
+  
+  const config = {
+    headers: {
+      "Authorization": `Bearer ${token}`
+    }
+  }
+  
+  let body = {
+    name:newTitle,
+    days:newHabitDays
+    }
+
+
 
   function addDay(wd, id) {
     if (!newHabitDays.includes(id)) {
@@ -23,24 +37,18 @@ export default function NewHabit(props) {
 
   }
 
-  const config = {
-    headers: {
-      "Authorization": `Bearer ${token}`
-    }
-  }
-  
-  let body = {
-    name:newTitle,
-    days:newHabitDays
-    }
 
 
-function cancelHabit(){        //depois deixar +- salvo
+function cancelHabit(){  
   console.log("cancelado")
+  setIsOpen(false)
 }
 
 function addHabit(){
   console.log(token)
+  setNewTitle("")
+  setnewHabitDays("")
+  setIsOpen(false)
 
 
 
@@ -49,18 +57,6 @@ axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits",
             body, config)
             .then(console.log("foi pra api"))
             .catch((err)=>console.log(err.data))
-
-
-
-
-
-
-
-
-
-
-
-
   
 }
 
@@ -68,21 +64,10 @@ axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits",
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
   return (
     <>
-      <AddBar />
+      <AddBar setIsOpen={setIsOpen} />
+      {isOpen===false ? <div></div> : 
       <NewHabitSty>
         {/* {dayColor === "red" ? <h1> vermelho </h1> : <h1> é azul </h1>} */}
 
@@ -109,6 +94,7 @@ axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits",
         <button className="cancel" onClick={()=>cancelHabit()}>Cancelar</button>
         <button className="save" onClick={()=> addHabit()}>Salvar</button>
       </NewHabitSty>
+      }
     </>
   );
 }
