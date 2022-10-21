@@ -5,24 +5,36 @@ import SignUpPage from "./pages/StartPage/SignUpPage";
 import HabitsPage from "./pages/HabitsPage/HabitsPage";
 import TodayPage from "./pages/TodayPage/TodayPage";
 import HistoryPage from "./pages/HistoryPage/HistoryPage";
-import MyContext from "../src/context/MyContext.js";
-import {useState} from "react"
+import ImageContext from "../src/context/ImageContext";
+import { useState, useContext } from "react";
 
 function App() {
-
-let [userImage, setUserImage] = useState("")
+  let [userImage, setUserImage] = useState("");
+  console.log(userImage)
 
   return (
     <>
       <BrowserRouter>
         <GlobalStyle />
+        {/* <ImageContext.Provider value={userImage}>  */}
           <Routes>
-            <Route path="/" element={<LoginPage />} />
-            <Route path="/cadastro" element={<SignUpPage setUserImage={setUserImage}/>} />
-            <Route path="/habitos" element={<HabitsPage userImage={userImage}/>} />
+            <Route 
+              path="/" 
+              element={<LoginPage />} />
+            <Route
+              path="/cadastro"
+              element={<SignUpPage setUserImage={setUserImage} />}
+            />
+            <Route
+              path="/habitos"
+              element={<HabitsPage 
+                userImage={userImage}
+                />}
+            />
             <Route path="/hoje" element={<TodayPage />} />
             <Route path="/historico" element={<HistoryPage />} />
           </Routes>
+        {/* </ImageContext.Provider>  */}
       </BrowserRouter>
     </>
   );

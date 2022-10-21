@@ -1,13 +1,14 @@
-import { renderMatches } from "react-router-dom";
+import { renderMatches, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import pic from "../assets/img/nyra.jpeg";
-import { useNavigate, useContext } from "react-router-dom";
+import { useContext } from "react";
 import ImageContext from "../context/ImageContext.js";
 
 export default function NavBar(props) {
+  //const {userImage} = useContext(ImageContext)
   const navigate = useNavigate();
   const {userImage} = props
-  //const [userImage, setUserImage] = useContext(ImageContext)
+
   return (
     <NavbarStyle>
       <p onClick={() => navigate("/")}>TrackIt</p>

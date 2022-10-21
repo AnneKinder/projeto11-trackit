@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { useState, useContext } from "react";
 import NavBar from "../../components/NavBar.js";
 import AddBar from "../HabitsPage/AddBar.js";
 import Footer from "../../components/Footer.js";
@@ -10,16 +11,20 @@ import MainStyle from "../../assets/styles/MainStyle.js";
 import ImageContext from "../../context/ImageContext.js";
 
 function HabitsPage(props) {
+  //const { userImage } = useContext(ImageContext);
   const {userImage} = props
-  // let [userImage, setUserImage] = useContext(ImageContext)
-  function AddHabit(){
-    alert("ok")
+  
+
+  function AddHabit() {
+    alert("ok");
   }
+
   return (
     <ScreenStyle>
-      {/* <ImageContext.Provider value={{userImage, setUserImage}}> */}
-      <NavBar userImage={userImage}/>
-      {/* </ImageContext.Provider> */}
+      <NavBar 
+      userImage={userImage} 
+      />
+
       <MainStyle>
         <AddBar AddHabit={AddHabit} />
         <FeedSty>
@@ -29,7 +34,6 @@ function HabitsPage(props) {
         </FeedSty>
         <Footer />
       </MainStyle>
-      
     </ScreenStyle>
   );
 }
