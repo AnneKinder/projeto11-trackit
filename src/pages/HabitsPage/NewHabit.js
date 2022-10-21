@@ -5,7 +5,7 @@ import AddBar from "./AddBar.js";
 import axios from "axios";
 
 export default function NewHabit(props) {
-  const {token} = props
+  const {token, setHabitExists} = props
   let [newTitle, setNewTitle] = useState("");
   let [newHabitDays, setnewHabitDays] = useState([]);
   let [dayColor, setDayColor] = useState("#ffffff");
@@ -49,6 +49,7 @@ function addHabit(){
   setNewTitle("")
   setnewHabitDays("")
   setIsOpen(false)
+  setHabitExists(true)
 
 
 

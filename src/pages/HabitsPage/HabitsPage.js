@@ -12,15 +12,15 @@ import ImageContext from "../../context/ImageContext.js";
 function HabitsPage(props) {
   //const { userImage } = useContext(ImageContext);
   const { userImage, token } = props;
+  let [habitExists, setHabitExists] = useState(false)
 
   return (
     <ScreenStyle>
       <NavBar userImage={userImage} />
       <MainStyle>
         <FeedSty>
-          <NewHabit token={token} />
-          <NoHabit />
-          <Habit />
+          <NewHabit token={token} setHabitExists={setHabitExists}/>
+          {!habitExists ? <NoHabit /> :  <Habit />}
         </FeedSty>
         <Footer />
       </MainStyle>
