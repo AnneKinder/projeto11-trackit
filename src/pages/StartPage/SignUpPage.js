@@ -9,27 +9,19 @@ import ImageContext from "../../context/ImageContext.js";
 
 function SignUpPage(props) {
   //const {setUserImage} = useContext(ImageContext)
-  const {setUserImage} = props
- 
+  const { setUserImage } = props;
+  //const { setTeste } = useContext(ImageContext);
+
   const navigate = useNavigate();
 
-  
   let [onload, setOnload] = useState(false);
-  let [disabled, setDisabled] = useState("")
+  let [disabled, setDisabled] = useState("");
   let [form, setForm] = useState({
     email: "",
     name: "",
     image: "",
     password: ""
   });
-  
-
-
-
-
-
-
-
 
   function sendData(e) {
     e.preventDefault();
@@ -41,15 +33,15 @@ function SignUpPage(props) {
       .then((res) => {
         navigate("/");
         setOnload(true);
-        setDisabled(false)
-        setUserImage(form.image)
+        setDisabled(false);
+        setUserImage(form.image);
+        //setTeste("teste!!");
       })
-      .catch((err) =>{
-
-        setDisabled(false)
-      alert(err.response.data.message)
-
-  })}
+      .catch((err) => {
+        setDisabled(false);
+        alert(err.response.data.message);
+      });
+  }
 
   function handleForm(e) {
     setForm({
@@ -60,7 +52,7 @@ function SignUpPage(props) {
 
   if (onload) {
     alert("load!");
-    setDisabled(true)
+    setDisabled(true);
   }
 
   return (

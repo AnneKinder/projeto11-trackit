@@ -1,23 +1,57 @@
 import styled from "styled-components";
-import WEEKDAYS from "../../constants/WEEKDAYS.js"
+import WEEKDAYS from "../../constants/WEEKDAYS.js";
 import { useState } from "react";
+import AddBar from "./AddBar.js";
 
 export default function NewHabit() {
-  let [newTitle, setNewTitle] = useState("")
+  let [newTitle, setNewTitle] = useState("");
+  let [newHabitDays, setnewHabitDays] = useState([]);
+  let [dayColor, setDayColor] = useState("#ffffff");
+
+  function addDay(wd, id) {
+    if (!newHabitDays.includes(id)) {
+      let newAdd = [...newHabitDays, id];
+      setnewHabitDays(newAdd);
+      setDayColor("red");
+    } else {
+      const newAdd = newHabitDays.filter((letter) => id !== letter);
+      setnewHabitDays(newAdd);
+      setDayColor("#ffffff");
+    }
+
+    console.log(newHabitDays);
+  }
+
   return (
-    <NewHabitSty>
-      <input 
-      type="text" 
-      name="habit" 
-      placeholder="nome do hábito" />
-      <div className="weekday-container">
-        {WEEKDAYS.map((wd, id) => (
-          <div className="weekday" key={id}>{wd}</div>
-        ))}
-      </div>
-      <button className="cancel">Cancelar</button>
-      <button className="save">Salvar</button>
-    </NewHabitSty>
+    <>
+      <AddBar />
+      <NewHabitSty>
+        {dayColor === "red" ? <h1> vermelho </h1> : <h1> é azul </h1>}
+
+        <input
+          type="text"
+          name="habit"
+          placeholder="nome do hábito"
+          value={newTitle}
+          onChange={(e) => setNewTitle(e.target.value)}
+        />
+        <div className="weekday-container">
+          {WEEKDAYS.map((wd, id) => (
+            <WeekDay
+              colorprop={newHabitDays.includes(id) ? "red" : "blue"}
+              id={id}
+              wd={wd}
+              key={id}
+              onClick={() => addDay(wd, id)}
+            >
+              {wd}
+            </WeekDay>
+          ))}
+        </div>
+        <button className="cancel">Cancelar</button>
+        <button className="save">Salvar</button>
+      </NewHabitSty>
+    </>
   );
 }
 
@@ -51,21 +85,6 @@ const NewHabitSty = styled.div`
     margin-left: 19px;
   }
 
-  .weekday {
-    width: 30px;
-    height: 30px;
-    background: #ffffff;
-    border: 1px solid #d5d5d5;
-    border-radius: 5px;
-    font-family: "Lexend Deca";
-    font-weight: 400;
-    font-size: 19.976px;
-    line-height: 25px;
-    color: #dbdbdb;
-    text-align: center;
-    margin: 2px;
-  }
-
   .cancel {
     width: 84px;
     height: 35px;
@@ -87,7 +106,22 @@ const NewHabitSty = styled.div`
     background: #52b6ff;
     border-radius: 4.63636px;
     border: #52b6ff 1px solid;
-    margin-top:24px;
+    margin-top: 24px;
     margin-left: 10px;
   }
+`;
+
+const WeekDay = styled.div`
+  width: 30px;
+  height: 30px;
+  background-color: ${(props) => props.colorprop};
+  border: 1px solid #d5d5d5;
+  border-radius: 5px;
+  font-family: "Lexend Deca";
+  font-weight: 400;
+  font-size: 19.976px;
+  line-height: 25px;
+  color: #dbdbdb;
+  text-align: center;
+  margin: 2px;
 `;

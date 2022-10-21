@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { useState, useContext } from "react";
 import NavBar from "../../components/NavBar.js";
-import AddBar from "../HabitsPage/AddBar.js";
 import Footer from "../../components/Footer.js";
 import NewHabit from "./NewHabit.js";
 import NoHabit from "./NoHabit.js";
@@ -12,21 +11,12 @@ import ImageContext from "../../context/ImageContext.js";
 
 function HabitsPage(props) {
   //const { userImage } = useContext(ImageContext);
-  const {userImage} = props
-  
-
-  function AddHabit() {
-    alert("ok");
-  }
+  const { userImage } = props;
 
   return (
     <ScreenStyle>
-      <NavBar 
-      userImage={userImage} 
-      />
-
+      <NavBar userImage={userImage} />
       <MainStyle>
-        <AddBar AddHabit={AddHabit} />
         <FeedSty>
           <NewHabit />
           <NoHabit />

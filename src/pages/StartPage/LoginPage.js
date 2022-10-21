@@ -4,7 +4,6 @@ import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import logo from "../../assets/img/logo.png";
 import { useNavigate } from "react-router-dom";
-import MyContext from "../../context/MyContext.js"
 
 function LoginPage() {
   const navigate = useNavigate();
@@ -12,8 +11,8 @@ function LoginPage() {
   let [password, setPassword] = useState("");
   let [token, setToken] = useState("");
   let [onload, setOnload] = useState(false);
-  let [disabled, setDisabled] = useState("")
-  
+  let [disabled, setDisabled] = useState("");
+
   let body = {
     email: email,
     password: password
@@ -31,18 +30,17 @@ function LoginPage() {
         setToken(res.data.token);
         navigate("/habitos");
         setOnload(true);
-        setDisabled(false)
+        setDisabled(false);
       })
-      .catch((err) =>{
-
-        setDisabled(false)
-      alert(err.response.data.message)
-
-  })}
+      .catch((err) => {
+        setDisabled(false);
+        alert(err.response.data.message);
+      });
+  }
 
   if (onload) {
     alert("loaddd");
-    setDisabled(true)
+    setDisabled(true);
   }
 
   return (
@@ -67,7 +65,10 @@ function LoginPage() {
           required
           disabled={disabled}
         />
-        <button type="submit" disabled={disabled}> Entrar </button>
+        <button type="submit" disabled={disabled}>
+          {" "}
+          Entrar{" "}
+        </button>
       </form>
       <p onClick={() => navigate("/cadastro")}>
         {" "}

@@ -1,11 +1,9 @@
 import styled from "styled-components";
-import TextSty from "../../assets/styles/TextSty.js"
+import TextSty from "../../assets/styles/TextSty.js";
 import { IonIcon } from "@ionic/react";
-import WEEKDAYS from "../../constants/WEEKDAYS.js"
+import WEEKDAYS from "../../constants/WEEKDAYS.js";
 
 export default function Habit() {
-  
-
   return (
     <HabitSty>
       <div className="habit-top">
@@ -17,10 +15,11 @@ export default function Habit() {
 
       <div className="weekday-container">
         {WEEKDAYS.map((wd, id) => (
-          <div className="weekday" key={id}>{wd}</div>
+          <div className="weekday" key={id}>
+            {wd}
+          </div>
         ))}
       </div>
-
     </HabitSty>
   );
 }

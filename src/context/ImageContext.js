@@ -1,5 +1,5 @@
-import {createContext} from "react"
+import { createContext } from "react";
 
-const ImageContext = createContext()
+const ImageContext = createContext();
 
-export default ImageContext
+export default ImageContext;

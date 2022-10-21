@@ -1,12 +1,10 @@
 import styled from "styled-components";
-import BlueTitle from "../../assets/styles/BlueTitle.js"
+import BlueTitle from "../../assets/styles/BlueTitle.js";
 
-
-export default function AddBar(props) {
-  const {AddHabit} = props
-
-
-
+export default function AddBar() {
+  function AddHabit() {
+    alert("novo");
+  }
 
   return (
     <AddBarSty>
@@ -24,7 +22,6 @@ const AddBarSty = styled.div`
   justify-content: center;
   padding: 0 20px;
 
-
   button {
     font-family: "Lexend Deca";
     width: 40px;
@@ -38,6 +35,6 @@ const AddBarSty = styled.div`
     font-weight: 400;
     font-size: 26.976px;
     color: #ffffff;
-    margin-left:130px;
+    margin-left: 130px;
   }
 `;
