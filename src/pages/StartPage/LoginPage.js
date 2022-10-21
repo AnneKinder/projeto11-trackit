@@ -5,11 +5,12 @@ import axios from "axios";
 import logo from "../../assets/img/logo.png";
 import { useNavigate } from "react-router-dom";
 
-function LoginPage() {
+function LoginPage(props) {
   const navigate = useNavigate();
+  const {setToken} = props
   let [email, setMail] = useState("");
   let [password, setPassword] = useState("");
-  let [token, setToken] = useState("");
+
   let [onload, setOnload] = useState(false);
   let [disabled, setDisabled] = useState("");
 

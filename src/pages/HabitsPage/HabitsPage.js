@@ -11,14 +11,14 @@ import ImageContext from "../../context/ImageContext.js";
 
 function HabitsPage(props) {
   //const { userImage } = useContext(ImageContext);
-  const { userImage } = props;
+  const { userImage, token } = props;
 
   return (
     <ScreenStyle>
       <NavBar userImage={userImage} />
       <MainStyle>
         <FeedSty>
-          <NewHabit />
+          <NewHabit token={token} />
           <NoHabit />
           <Habit />
         </FeedSty>

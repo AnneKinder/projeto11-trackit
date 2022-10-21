@@ -2,8 +2,10 @@ import styled from "styled-components";
 import WEEKDAYS from "../../constants/WEEKDAYS.js";
 import { useState } from "react";
 import AddBar from "./AddBar.js";
+import axios from "axios";
 
-export default function NewHabit() {
+export default function NewHabit(props) {
+  const {token} = props
   let [newTitle, setNewTitle] = useState("");
   let [newHabitDays, setnewHabitDays] = useState([]);
   let [dayColor, setDayColor] = useState("#ffffff");
@@ -19,14 +21,70 @@ export default function NewHabit() {
       setDayColor("#ffffff");
     }
 
-    console.log(newHabitDays);
   }
+
+  const config = {
+    headers: {
+      "Authorization": `Bearer ${token}`
+    }
+  }
+  
+  let body = {
+    name:newTitle,
+    days:newHabitDays
+    }
+
+
+function cancelHabit(){        //depois deixar +- salvo
+  console.log("cancelado")
+}
+
+function addHabit(){
+  console.log(token)
+
+
+
+
+axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits",
+            body, config)
+            .then(console.log("foi pra api"))
+            .catch((err)=>console.log(err.data))
+
+
+
+
+
+
+
+
+
+
+
+
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   return (
     <>
       <AddBar />
       <NewHabitSty>
-        {dayColor === "red" ? <h1> vermelho </h1> : <h1> é azul </h1>}
+        {/* {dayColor === "red" ? <h1> vermelho </h1> : <h1> é azul </h1>} */}
 
         <input
           type="text"
@@ -38,7 +96,7 @@ export default function NewHabit() {
         <div className="weekday-container">
           {WEEKDAYS.map((wd, id) => (
             <WeekDay
-              colorprop={newHabitDays.includes(id) ? "red" : "blue"}
+              colorprop={newHabitDays.includes(id) ? "#e8e8e8" : "#ffffff"}
               id={id}
               wd={wd}
               key={id}
@@ -48,8 +106,8 @@ export default function NewHabit() {
             </WeekDay>
           ))}
         </div>
-        <button className="cancel">Cancelar</button>
-        <button className="save">Salvar</button>
+        <button className="cancel" onClick={()=>cancelHabit()}>Cancelar</button>
+        <button className="save" onClick={()=> addHabit()}>Salvar</button>
       </NewHabitSty>
     </>
   );
