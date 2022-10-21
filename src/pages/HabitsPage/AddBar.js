@@ -2,11 +2,16 @@ import styled from "styled-components";
 import BlueTitle from "../../assets/styles/BlueTitle.js"
 
 
-export default function NavBar() {
+export default function AddBar(props) {
+  const {AddHabit} = props
+
+
+
+
   return (
     <AddBarSty>
       <BlueTitle> Meus hábitos </BlueTitle>
-      <button> + </button>
+      <button onClick={AddHabit}> + </button>
     </AddBarSty>
   );
 }

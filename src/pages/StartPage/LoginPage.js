@@ -12,8 +12,8 @@ function LoginPage() {
   let [password, setPassword] = useState("");
   let [token, setToken] = useState("");
   let [onload, setOnload] = useState(false);
-  const teste = useContext(MyContext)
-
+  let [disabled, setDisabled] = useState("")
+  
   let body = {
     email: email,
     password: password
@@ -31,17 +31,23 @@ function LoginPage() {
         setToken(res.data.token);
         navigate("/habitos");
         setOnload(true);
+        setDisabled(false)
       })
-      .catch((err) => console.log(err.response.data));
-  }
+      .catch((err) =>{
+
+        setDisabled(false)
+      alert(err.response.data.message)
+
+  })}
 
   if (onload) {
     alert("loaddd");
+    setDisabled(true)
   }
 
   return (
     <LoginStyle>
-      <img src={logo} alt="logo" onClick={()=>  alert(teste)}/>
+      <img src={logo} alt="logo" />
       <form onSubmit={sendData}>
         <input
           name="email"
@@ -50,6 +56,7 @@ function LoginPage() {
           value={email}
           onChange={(e) => setMail(e.target.value)}
           required
+          disabled={disabled}
         />
         <input
           name="senha"
@@ -58,8 +65,9 @@ function LoginPage() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
+          disabled={disabled}
         />
-        <button type="submit"> Entrar </button>
+        <button type="submit" disabled={disabled}> Entrar </button>
       </form>
       <p onClick={() => navigate("/cadastro")}>
         {" "}

@@ -1,11 +1,15 @@
 import styled from "styled-components";
 import WEEKDAYS from "../../constants/WEEKDAYS.js"
+import { useState } from "react";
 
 export default function NewHabit() {
-  
+  let [newTitle, setNewTitle] = useState("")
   return (
     <NewHabitSty>
-      <input type="text" name="habit" placeholder="nome do hábito" />
+      <input 
+      type="text" 
+      name="habit" 
+      placeholder="nome do hábito" />
       <div className="weekday-container">
         {WEEKDAYS.map((wd, id) => (
           <div className="weekday" key={id}>{wd}</div>

@@ -1,22 +1,34 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import logo from "../../assets/img/logo.png";
 import StartStyle from "../../assets/styles/StartStyle.js";
 import { useNavigate } from "react-router-dom";
+import MyContext from "../../context/MyContext.js"
 
 function SignUpPage() {
-  const navigate = useNavigate();
-  let [onload, setOnload] = useState(false);
 
+  const navigate = useNavigate();
+
+  const {userImage, setUserImage} = useContext(MyContext)
+  
+  let [onload, setOnload] = useState(false);
+  let [disabled, setDisabled] = useState("")
   let [form, setForm] = useState({
     email: "",
     name: "",
     image: "",
     password: ""
   });
-  let [disabled, setDisabled] = useState(false);
+  
+
+
+
+
+
+
+
 
   function sendData(e) {
     e.preventDefault();
@@ -28,9 +40,15 @@ function SignUpPage() {
       .then((res) => {
         navigate("/");
         setOnload(true);
+        setDisabled(false)
+        setUserImage(form.image)
       })
-      .catch((err) => console.log(err));
-  }
+      .catch((err) =>{
+
+        setDisabled(false)
+      alert(err.response.data.message)
+
+  })}
 
   function handleForm(e) {
     setForm({
@@ -41,6 +59,7 @@ function SignUpPage() {
 
   if (onload) {
     alert("load!");
+    setDisabled(true)
   }
 
   return (
