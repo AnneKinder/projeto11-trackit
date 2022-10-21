@@ -3,39 +3,32 @@ import TextSty from "../../assets/styles/TextSty.js";
 import { IonIcon } from "@ionic/react";
 import WEEKDAYS from "../../constants/WEEKDAYS.js";
 import axios from "axios";
+import { useState, useEffect } from "react";
 
 export default function Habit(props) {
+  const { token } = props;
 
-  const {token} = props
+  let [habitsArray, setHabitsArray] = useState([]);
 
   const config = {
     headers: {
-      "Authorization": `Bearer ${token}`
-    }
-  }
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  useEffect(() => {
+    axios
+      .get(
+        "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits",
+        config
+      )
+      .then((res) => {
+        console.log(res.data);
+        setHabitsArray(res.data);
+      })
+      .catch((err) => console.logo(err.data));
+  }, []);
   
-  // let body = {
-  //   name:newTitle,
-  //   days:newHabitDays
-  //   }
-
-
-
-axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits", config)
-          .then(res=> {
-            console.log(res.data)
-          
-          
-          })
-          .catch("nao chegou")
-
-         
-
-
-
-
-
-
 
   return (
     <HabitSty>
@@ -67,7 +60,7 @@ const HabitSty = styled.div`
   box-sizing: border-box;
   padding: 15px;
   margin-top: 30px;
-  box-shadow: 0px 1px 4px 1px rgba(0,0,0,0.15);
+  box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.15);
 
   .weekday-container {
     width: 300px;
