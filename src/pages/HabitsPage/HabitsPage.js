@@ -20,7 +20,7 @@ function HabitsPage(props) {
       <MainStyle>
         <FeedSty>
           <NewHabit token={token} setHabitExists={setHabitExists}/>
-          {!habitExists ? <NoHabit /> :  <Habit />}
+          {!habitExists ? <NoHabit /> :  <Habit token={token} />}
         </FeedSty>
         <Footer />
       </MainStyle>

@@ -56,7 +56,7 @@ if(newTitle===null || newHabitDays=== null){
 axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits",
             body, config)
             .then(res =>{
-              console.log("foi pra api")
+             // console.log("foi pra api")
               setNewTitle("")
               setnewHabitDays("")
               setIsOpen(false)

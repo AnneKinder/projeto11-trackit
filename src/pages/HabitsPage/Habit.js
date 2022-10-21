@@ -2,8 +2,41 @@ import styled from "styled-components";
 import TextSty from "../../assets/styles/TextSty.js";
 import { IonIcon } from "@ionic/react";
 import WEEKDAYS from "../../constants/WEEKDAYS.js";
+import axios from "axios";
 
-export default function Habit() {
+export default function Habit(props) {
+
+  const {token} = props
+
+  const config = {
+    headers: {
+      "Authorization": `Bearer ${token}`
+    }
+  }
+  
+  // let body = {
+  //   name:newTitle,
+  //   days:newHabitDays
+  //   }
+
+
+
+axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits", config)
+          .then(res=> {
+            console.log(res.data)
+          
+          
+          })
+          .catch("nao chegou")
+
+         
+
+
+
+
+
+
+
   return (
     <HabitSty>
       <div className="habit-top">
