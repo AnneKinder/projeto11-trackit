@@ -35,7 +35,7 @@ function SignUpPage(props) {
         setOnload(true);
         setDisabled(false);
         setUserImage(form.image);
-        //setTeste("teste!!");
+        
       })
       .catch((err) => {
         setDisabled(false);

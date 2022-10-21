@@ -45,21 +45,26 @@ function cancelHabit(){
 }
 
 function addHabit(){
-  console.log(token)
-  setNewTitle("")
-  setnewHabitDays("")
-  setIsOpen(false)
-  setHabitExists(true)
 
 
+if(newTitle===null || newHabitDays=== null){
+  alert("Insira hábito e dias válidos.")
+  
+}else{
 
 
 axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits",
             body, config)
-            .then(console.log("foi pra api"))
+            .then(res =>{
+              console.log("foi pra api")
+              setNewTitle("")
+              setnewHabitDays("")
+              setIsOpen(false)
+              setHabitExists(true)
+            })
             .catch((err)=>console.log(err.data))
   
-}
+}}
 
 
 
