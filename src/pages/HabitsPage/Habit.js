@@ -5,7 +5,7 @@ import WEEKDAYS from "../../constants/WEEKDAYS.js";
 import axios from "axios";
 
 export default function Habit(props) {
-  const { habitsArray, setHabitsArray, token} = props;
+  const { habitsArray, setHabitsArray, token, setUpdateDeleted} = props;
 
   const config = {
     headers: {
@@ -24,6 +24,7 @@ export default function Habit(props) {
     );
 
   setHabitsArray(habitsArray.filter((item) => item.id !== habitId));
+  setUpdateDeleted(true)
   }
 
   return (

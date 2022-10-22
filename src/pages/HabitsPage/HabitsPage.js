@@ -15,6 +15,7 @@ function HabitsPage(props) {
   let [habitAdded, setHabitAdded] = useState(false)
   let [habitLength, setHabitLength] = useState("")
   let [habitsArray, setHabitsArray] = useState([]);
+  let [updateDeleted, setUpdateDeleted] = useState(false)
 
   
 let counter=0
@@ -38,7 +39,7 @@ let counter=0
         console.log(res.data);
       })
       .catch((err) => console.log(err.data));
-  }, [habitAdded]);
+  }, [habitAdded, updateDeleted]);
 
   return (
     <ScreenStyle>
@@ -46,7 +47,7 @@ let counter=0
       <MainStyle>
         <FeedSty>
          <NewHabit token={token} setHabitAdded={setHabitAdded} counter={counter}/>
-          <Habit habitsArray={habitsArray} setHabitsArray={setHabitsArray} token={token}/>
+          <Habit habitsArray={habitsArray} setHabitsArray={setHabitsArray} token={token} setUpdateDeleted={setUpdateDeleted}/>
           {counter!==0 ? <NoHabit /> : ""  }
           
         </FeedSty>
