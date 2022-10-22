@@ -5,7 +5,7 @@ import AddBar from "./AddBar.js";
 import axios from "axios";
 
 export default function NewHabit(props) {
-  const {token, setHabitExists} = props
+  const {token, setHabitAdded, counter} = props
   let [newTitle, setNewTitle] = useState("");
   let [newHabitDays, setnewHabitDays] = useState([]);
   let [dayColor, setDayColor] = useState("#ffffff");
@@ -60,7 +60,8 @@ axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits",
               setNewTitle("")
               setnewHabitDays("")
               setIsOpen(false)
-              setHabitExists(true)
+              setHabitAdded(true)
+              counter +=1
             })
             .catch((err)=>console.log(err.data))
   

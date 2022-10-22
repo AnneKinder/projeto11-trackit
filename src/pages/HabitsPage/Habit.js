@@ -2,15 +2,10 @@ import styled from "styled-components";
 import TextSty from "../../assets/styles/TextSty.js";
 import { IonIcon } from "@ionic/react";
 import WEEKDAYS from "../../constants/WEEKDAYS.js";
-import axios from "axios";
-import { useState, useEffect } from "react";
 
 export default function Habit(props) {
-  const { token, habitLength, habitsArray  } = props;
+  const { habitsArray  } = props;
 
-
-
-  let [itemDays, setItemDays] = useState([]);
 
   return (
     <>

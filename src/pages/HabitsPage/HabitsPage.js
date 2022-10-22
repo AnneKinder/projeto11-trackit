@@ -11,14 +11,16 @@ import MainStyle from "../../assets/styles/MainStyle.js";
 
 function HabitsPage(props) {
   //const { userImage } = useContext(ImageContext);
-  const { userImage, token } = props;
-  let [habitExists, setHabitExists] = useState(false)
+  const { userImage, token} = props;
+  let [habitAdded, setHabitAdded] = useState(false)
   let [habitLength, setHabitLength] = useState("")
 
 
   let [habitsArray, setHabitsArray] = useState([]);
 
   
+let counter=0
+
 
   const config = {
     headers: {
@@ -38,17 +40,17 @@ function HabitsPage(props) {
         console.log(res.data);
       })
       .catch((err) => console.log(err.data));
-  }, []);
+  }, [habitAdded]);
 
   return (
     <ScreenStyle>
       <NavBar userImage={userImage} />
       <MainStyle>
         <FeedSty>
-         <NewHabit token={token} setHabitExists={setHabitExists}/>
-          {/* {!habitExists ? <NoHabit /> :   */}
-          <Habit setHabitsArray={setHabitsArray} habitsArray={habitsArray} setHabitLength={setHabitLength} habitLength={habitLength}/>
-          {/* } */}
+         <NewHabit token={token} setHabitAdded={setHabitAdded} counter={counter}/>
+          <Habit habitsArray={habitsArray} />
+          {counter!==0 ? <NoHabit /> : ""  }
+          
         </FeedSty>
          
         <Footer  />
