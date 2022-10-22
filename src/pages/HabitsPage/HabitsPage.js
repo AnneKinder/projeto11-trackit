@@ -18,10 +18,7 @@ function HabitsPage(props) {
       <NavBar userImage={userImage} />
       <MainStyle>
         <FeedSty>
-
-
-
-          <NewHabit token={token} setHabitExists={setHabitExists}/>
+         <NewHabit token={token} setHabitExists={setHabitExists}/>
           {!habitExists ? <NoHabit /> :  <Habit token={token} />}
         </FeedSty>
          

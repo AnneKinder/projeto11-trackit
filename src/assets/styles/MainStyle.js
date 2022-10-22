@@ -4,7 +4,7 @@ const MainStyle = styled.div`
   padding-top: 90px;
   padding-bottom: 90px;
   width: 100vw;
-  min-height: 100vw;
+  min-height:900px;
   background-color: #F2F2F2;
 `;
 
