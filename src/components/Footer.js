@@ -1,10 +1,11 @@
 import styled from "styled-components";
-
+import ProgressBar from "./ProgressBar.js"
 export default function NavBar() {
   return (
     <FooterStyle>
+     
       <p> Hábitos</p>
-      <p> Hoje</p>
+      <ProgressBar />
       <p> Histórico</p>
     </FooterStyle>
   );
@@ -16,7 +17,7 @@ const FooterStyle = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: lightgreen;
+  background-color: #FFFFFF;
   position: fixed;
   bottom: 0;
   left: 0;

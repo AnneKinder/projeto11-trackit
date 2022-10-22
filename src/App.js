@@ -5,8 +5,8 @@ import SignUpPage from "./pages/StartPage/SignUpPage";
 import HabitsPage from "./pages/HabitsPage/HabitsPage";
 import TodayPage from "./pages/TodayPage/TodayPage";
 import HistoryPage from "./pages/HistoryPage/HistoryPage";
-import ImageContext from "../src/context/ImageContext";
 import { useState, useContext } from "react";
+
 
 function App() {
   let [userImage, setUserImage] = useState("");

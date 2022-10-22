@@ -62,6 +62,20 @@ body{
 	font-family: 'Lexend Deca', sans-serif;
 	box-sizing: border-box;
 }
-`;
 
+
+  .action-container {
+    display: flex;
+    gap: 15px;
+  }
+  .action-container button {
+    font-size: 12px;
+  }
+
+
+  h3{
+	color:red;
+	font-size: 20px;
+  }
+`;
 export default GlobalStyle;
