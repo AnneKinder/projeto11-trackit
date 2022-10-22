@@ -14,8 +14,6 @@ function HabitsPage(props) {
   const { userImage, token} = props;
   let [habitAdded, setHabitAdded] = useState(false)
   let [habitLength, setHabitLength] = useState("")
-
-
   let [habitsArray, setHabitsArray] = useState([]);
 
   
@@ -48,7 +46,7 @@ let counter=0
       <MainStyle>
         <FeedSty>
          <NewHabit token={token} setHabitAdded={setHabitAdded} counter={counter}/>
-          <Habit habitsArray={habitsArray} />
+          <Habit habitsArray={habitsArray} setHabitsArray={setHabitsArray} token={token}/>
           {counter!==0 ? <NoHabit /> : ""  }
           
         </FeedSty>

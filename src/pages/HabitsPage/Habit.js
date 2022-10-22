@@ -2,10 +2,29 @@ import styled from "styled-components";
 import TextSty from "../../assets/styles/TextSty.js";
 import { IonIcon } from "@ionic/react";
 import WEEKDAYS from "../../constants/WEEKDAYS.js";
+import axios from "axios";
 
 export default function Habit(props) {
-  const { habitsArray  } = props;
+  const { habitsArray, setHabitsArray, token} = props;
 
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+
+  function deletePost(habit, habitId) {
+    alert(habit.name) //titulo do habito
+    alert(habit.id) //numero esquisitao
+    alert (habitId) //id do habito na habitsArray
+
+   axios.delete(
+     `https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${habit.id}`, config
+    );
+
+  setHabitsArray(habitsArray.filter((item) => item.id !== habitId));
+  }
 
   return (
     <>
@@ -13,7 +32,7 @@ export default function Habit(props) {
         <HabitSty habit={habit} habitId={habitId} key={habitId}>
           <div className="habit-top">
             <TextSty> {habit.name} </TextSty>
-            <div className="trashcan">
+            <div onClick={() => deletePost(habit, habitId)} className="trashcan">
               <IonIcon icon="trash-outline" />
             </div>
           </div>
