@@ -88,8 +88,8 @@ axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits",
           {WEEKDAYS.map((wd, id) => (
             <WeekDay
               colorprop={newHabitDays.includes(id) ? "#e8e8e8" : "#ffffff"}
-              id={id}
               wd={wd}
+              id={id}
               key={id}
               onClick={() => addDay(wd, id)}
             >

@@ -52,9 +52,13 @@ function showHabits(){
 
       <div className="weekday-container">
         {WEEKDAYS.map((wd, id) => (
-          <div className="weekday" key={id}>
+          <WeekDay 
+          colorprop={"blue"}
+          wd={wd}
+          id={id}
+          key={id}>
             {wd}
-          </div>
+          </WeekDay>
         ))}
       </div>
     </HabitSty>
@@ -101,4 +105,20 @@ const HabitSty = styled.div`
     align-items: center;
     justify-content: space-between;
   }
+`;
+
+
+const WeekDay = styled.div`
+  width: 30px;
+  height: 30px;
+  background-color: ${(props) => props.colorprop};
+  border: 1px solid #d5d5d5;
+  border-radius: 5px;
+  font-family: "Lexend Deca";
+  font-weight: 400;
+  font-size: 19.976px;
+  line-height: 25px;
+  color: #dbdbdb;
+  text-align: center;
+  margin: 2px;
 `;
