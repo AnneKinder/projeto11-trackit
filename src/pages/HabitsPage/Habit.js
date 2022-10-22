@@ -6,79 +6,38 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 
 export default function Habit(props) {
-  const { token } = props;
-
-  let [habitsArray, setHabitsArray] = useState([]);
-  let [activeIds, setActiveIds] = useState([]);
-  let [activeNames, setActiveNames] = useState([]);
-
-  let activeDays = [0,3,5]
-  let arrayTeste = [1,2]
-
-  const config = {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  };
-
-
-  useEffect(() => {
-    axios
-      .get(
-        "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits",
-        config
-      )
-      .then((res) => {
-        setHabitsArray(res.data);
-        console.log(res.data)
-       
-      })
-      .catch((err) => console.log(err.data));
-  }, []);
-  
-
-let [itemDays, setItemDays] = useState([])
+  const { token, habitLength, habitsArray  } = props;
 
 
 
-
+  let [itemDays, setItemDays] = useState([]);
 
   return (
-   
-<>
+    <>
+      {habitsArray.map((habit, habitId) => (
+        <HabitSty habit={habit} habitId={habitId} key={habitId}>
+          <div className="habit-top">
+            <TextSty> {habit.name} </TextSty>
+            <div className="trashcan">
+              <IonIcon icon="trash-outline" />
+            </div>
+          </div>
 
-
-{habitsArray.map((habit, habitId)=> (
-      <HabitSty
-      habit={habit}
-      habitId={habitId}
-      key={habitId}>
-
-      <div className="habit-top">
-        <TextSty> {habit.name} </TextSty>
-        <div className="trashcan">
-          <IonIcon icon="trash-outline" />
-        </div>
-      </div>
-
-      <div className="weekday-container">
-        {WEEKDAYS.map((wd, id) => (
-          <WeekDay 
-          colorprop={habit.days.includes(id) ? "#e8e8e8" : "#ffffff"}
-          wd={wd}
-          id={id}
-          key={id}>
-            {wd}
-          </WeekDay>
-        ))}
-      </div>
-      
-    </HabitSty>
-   
-
-   ))}
-   </>
-   
+          <div className="weekday-container">
+            {WEEKDAYS.map((wd, id) => (
+              <WeekDay
+                colorprop={habit.days.includes(id) ? "#e8e8e8" : "#ffffff"}
+                wd={wd}
+                id={id}
+                key={id}
+              >
+                {wd}
+              </WeekDay>
+            ))}
+          </div>
+        </HabitSty>
+      ))}
+    </>
   );
 }
 
@@ -123,7 +82,6 @@ const HabitSty = styled.div`
     justify-content: space-between;
   }
 `;
-
 
 const WeekDay = styled.div`
   width: 30px;
