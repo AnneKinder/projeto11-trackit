@@ -16,6 +16,16 @@ export default function Habit(props) {
     },
   };
 
+
+function showHabits(){
+  console.log(habitsArray[0].id)
+  console.log(habitsArray[0].name)
+  console.log(habitsArray[0].days)
+ 
+
+}
+
+
   useEffect(() => {
     axios
       .get(
@@ -23,8 +33,9 @@ export default function Habit(props) {
         config
       )
       .then((res) => {
-        console.log(res.data);
         setHabitsArray(res.data);
+        showHabits()
+       
       })
       .catch((err) => console.logo(err.data));
   }, []);
