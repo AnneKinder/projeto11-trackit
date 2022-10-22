@@ -11,7 +11,7 @@ export default function Habit(props) {
   let [habitsArray, setHabitsArray] = useState([]);
   let [activeIds, setActiveIds] = useState([]);
   let [activeNames, setActiveNames] = useState([]);
-  //let [activeDays, setActiveDays] = useState([]);
+
   let activeDays = [0,3,5]
   let arrayTeste = [1,2]
 
@@ -30,6 +30,7 @@ export default function Habit(props) {
       )
       .then((res) => {
         setHabitsArray(res.data);
+        console.log(res.data)
        
       })
       .catch((err) => console.log(err.data));
@@ -46,20 +47,13 @@ let [itemDays, setItemDays] = useState([])
    
 <>
 
-{/* {habitsArray.map((habitItem1)=> setfirstId(habitItem1.days))} */}
 
 {habitsArray.map((habit, habitId)=> (
       <HabitSty
       habit={habit}
       habitId={habitId}
-      key={habitId}
-      // boxId={setfirstId(habitId)}
-      // itemdays={
-      //   useEffect(()=> 
-      //   setItemDays(habit.days)
-      //   , [])
-      // }
-      >
+      key={habitId}>
+
       <div className="habit-top">
         <TextSty> {habit.name} </TextSty>
         <div className="trashcan">
@@ -70,7 +64,7 @@ let [itemDays, setItemDays] = useState([])
       <div className="weekday-container">
         {WEEKDAYS.map((wd, id) => (
           <WeekDay 
-          colorprop={itemDays.includes(wd) ? "blue" : "red"}
+          colorprop={habit.days.includes(id) ? "#e8e8e8" : "#ffffff"}
           wd={wd}
           id={id}
           key={id}>
@@ -78,6 +72,7 @@ let [itemDays, setItemDays] = useState([])
           </WeekDay>
         ))}
       </div>
+      
     </HabitSty>
    
 
