@@ -9,21 +9,17 @@ export default function Habit(props) {
   const { token } = props;
 
   let [habitsArray, setHabitsArray] = useState([]);
+  let [activeIds, setActiveIds] = useState([]);
+  let [activeNames, setActiveNames] = useState([]);
+  //let [activeDays, setActiveDays] = useState([]);
+  let activeDays = [0,3,5]
+  let arrayTeste = [1,2]
 
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   };
-
-
-function showHabits(){
-  console.log(habitsArray[0].id)
-  console.log(habitsArray[0].name)
-  console.log(habitsArray[0].days)
- 
-
-}
 
 
   useEffect(() => {
@@ -34,17 +30,38 @@ function showHabits(){
       )
       .then((res) => {
         setHabitsArray(res.data);
-        showHabits()
        
       })
-      .catch((err) => console.logo(err.data));
+      .catch((err) => console.log(err.data));
   }, []);
   
 
+let [itemDays, setItemDays] = useState([])
+
+
+
+
+
   return (
-    <HabitSty>
+   
+<>
+
+{/* {habitsArray.map((habitItem1)=> setfirstId(habitItem1.days))} */}
+
+{habitsArray.map((habit, habitId)=> (
+      <HabitSty
+      habit={habit}
+      habitId={habitId}
+      key={habitId}
+      // boxId={setfirstId(habitId)}
+      // itemdays={
+      //   useEffect(()=> 
+      //   setItemDays(habit.days)
+      //   , [])
+      // }
+      >
       <div className="habit-top">
-        <TextSty> Título do hábito</TextSty>
+        <TextSty> {habit.name} </TextSty>
         <div className="trashcan">
           <IonIcon icon="trash-outline" />
         </div>
@@ -53,7 +70,7 @@ function showHabits(){
       <div className="weekday-container">
         {WEEKDAYS.map((wd, id) => (
           <WeekDay 
-          colorprop={"blue"}
+          colorprop={itemDays.includes(wd) ? "blue" : "red"}
           wd={wd}
           id={id}
           key={id}>
@@ -62,6 +79,11 @@ function showHabits(){
         ))}
       </div>
     </HabitSty>
+   
+
+   ))}
+   </>
+   
   );
 }
 
