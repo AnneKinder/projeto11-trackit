@@ -48,10 +48,8 @@ function HabitsPage() {
       <MainStyle>
         <FeedSty>
          <NewHabit habitAdded={habitAdded} setHabitAdded={setHabitAdded} counter={counter}/>
-    
           <Habit habitsArray={habitsArray} setHabitsArray={setHabitsArray} setUpdateDeleted={setUpdateDeleted}/>
           {counter!==0 ? <NoHabit /> : ""  }
-          
         </FeedSty>
         <Footer  />
       </MainStyle>

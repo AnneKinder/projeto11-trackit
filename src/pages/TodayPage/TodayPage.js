@@ -11,15 +11,16 @@ import axios from "axios";
 import {AuthContext} from "../../context/auth.js"
 
 function TodayPage(props) {
+  const {user, setUser} = React.useContext(AuthContext)
   const {progressB, setProgressB} = React.useContext(AuthContext)
-  const { userImage, token } = props;
+  const { userImage } = props;
   let [todayList, setTodayList] = useState([]);
   let [checkHabits, setCheckHabits] = useState([]);
   let [habitosFeitos, setHabitosFeitos] = useState([]);
   let [result, setResult] = useState(0);
   const config = {
     headers: {
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${user.token}`,
     },
   };
 
@@ -43,7 +44,7 @@ function TodayPage(props) {
 
   return (
     <ScreenStyle>
-      <NavBar userImage={userImage} />
+      <NavBar/>
       <MainStyle>
         <FeedSty>
           <TodayBar result={result}/>
@@ -57,7 +58,7 @@ function TodayPage(props) {
               isDone={t.done}
               checkHabits={checkHabits}
               setCheckHabits={setCheckHabits}
-              token={token}
+              token={user.token}
             />
           ))}
         </FeedSty>
