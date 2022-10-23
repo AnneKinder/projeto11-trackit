@@ -10,18 +10,19 @@ function SignUpPage(props) {
   //const {setUserImage} = useContext(ImageContext)
 
   const navigate = useNavigate();
-
-  let [onload, setOnload] = useState(false);
-  let [disabled, setDisabled] = useState("");
+  let [disabled, setDisabled] = useState(false);
   let [form, setForm] = useState({
     email: "",
     name: "",
     image: "",
-    password: ""
+    password: "",
   });
 
   function sendData(e) {
     e.preventDefault();
+
+    setDisabled(true);
+
     axios
       .post(
         "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/sign-up",
@@ -29,30 +30,23 @@ function SignUpPage(props) {
       )
       .then((res) => {
         navigate("/");
-        setOnload(true);
-        setDisabled(false);
-        
+        setDisabled(false)
       })
       .catch((err) => {
-        setDisabled(false);
         alert(err.response.data.message);
+        setDisabled(false)
       });
   }
 
   function handleForm(e) {
     setForm({
       ...form,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   }
 
-  if (onload) {
-    alert("load!");
-    setDisabled(true);
-  }
-
   return (
-    <StartStyle>
+    <StartStyle buttoncolor={disabled===true ? "#D4D4D4" : "#52b6ff"} inputcolor={disabled===true ? "#D4D4D4" : "#FFFFFF"}>
       <img src={logo} onClick={() => navigate("/")} alt="logo" />
       <form onSubmit={sendData}>
         <input
@@ -91,7 +85,7 @@ function SignUpPage(props) {
           value={form.image}
           disabled={disabled}
         />
-        <button type="submit"> Cadastrar </button>
+        <button type="submit" disabled={disabled}> Cadastrar </button>
       </form>
       <p> Já tem uma conta? Faça login! </p>
     </StartStyle>

@@ -13,7 +13,6 @@ function LoginPage(props) {
   const {user, setUser} = React.useContext(AuthContext)
   const [email, setMail] = useState("");
   const [password, setPassword] = useState("");
-  const [onload, setOnload] = useState(false);
   const [disabled, setDisabled] = useState("");
 
   let body = {
@@ -37,7 +36,6 @@ function LoginPage(props) {
         setUserImage(res.data.image)
         setUser(res.data.image)
         navigate("/hoje");
-        setOnload(true);
         setDisabled(false);
         
       })
@@ -51,7 +49,7 @@ function LoginPage(props) {
 
 
   return (
-    <LoginStyle buttoncolor={disabled===true ? "lightgrey" : "#52b6ff"} inputcolor={disabled===true ? "#red" : "#E5E5E5"} >
+    <LoginStyle buttoncolor={disabled===true ? "#D4D4D4" : "#52b6ff"} inputcolor={disabled===true ? "#D4D4D4" : "#FFFFFF"} >
      
      {/*  */}
       <img src={logo} alt="logo" />

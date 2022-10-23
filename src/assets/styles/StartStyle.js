@@ -17,14 +17,14 @@ const StartStyle = styled.div`
     display: flex;
     flex-direction: column;
   }
-  }
+  
   input {
     box-sizing: border-box;
     width: 303px;
     height: 45px;
     left: 36px;
     top: 279px;
-    background: #ffffff;
+    background: ${props=> props.inputcolor};
     border: 1px solid #d5d5d5;
     border-radius: 5px;
     font-weight: 400;
@@ -40,7 +40,8 @@ const StartStyle = styled.div`
     height: 45px;
     left: 36px;
     top: 381px;
-    background: #52b6ff;
+    background: ${props=>props.buttoncolor};
+    /* #52b6ff; */
     border-radius: 4.63636px;
     font-weight: 400;
     font-size: 20.976px;
