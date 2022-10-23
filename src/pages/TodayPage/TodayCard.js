@@ -7,7 +7,7 @@ import axios from "axios";
 
 
 export default function TodayCard(props) {
-  const { name, sequence, record, id, isDone, token, checkHabits, setCheckHabits } = props;
+  const { name, sequence, record, id, calculate, isDone, token, checkHabits, setCheckHabits } = props;
   
   let bodyCheck= {done:true}
   let bodyUncheck={done:false}
@@ -18,16 +18,18 @@ export default function TodayCard(props) {
     },
   };
 
+
+
+
   function BoxAction() {
 
-
     if (isDone===true) {
-      alert("ja foi enviado"); // fazer requisiçao de delete aqui
    
       axios.post(`https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${id}/uncheck`, bodyUncheck, config)
-      .then(console.log("unchecked"))
+      .then()
       .catch((err) => console.log(err.data))
       setCheckHabits(checkHabits.filter((item) => item.id !==id));
+      
     } else {
 
       axios
@@ -36,8 +38,8 @@ export default function TodayCard(props) {
           config
         )
         .then((res) => {
-          console.log("enviou check pra api");
           setCheckHabits([...checkHabits, id]);
+          
         })
         .catch((err) => console.log(err.data));
     }
