@@ -33,7 +33,6 @@ function HabitsPage(props) {
       .then((res) => {
         setHabitsArray(res.data);
         setHabitLength(res.data.length)
-        console.log(res)
       })
       .catch((err) => console.log(err.data));
   }, [habitAdded, updateDeleted]);
@@ -48,7 +47,6 @@ function HabitsPage(props) {
           {counter!==0 ? <NoHabit /> : ""  }
           
         </FeedSty>
-         
         <Footer  />
       </MainStyle>
     </ScreenStyle>

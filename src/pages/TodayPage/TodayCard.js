@@ -7,11 +7,11 @@ import axios from "axios";
 import { setSelectionRange } from "@testing-library/user-event/dist/utils";
 
 export default function TodayCard(props) {
-  const {name, sequence, record, id, token} = props
-  let [boxColor, setBoxColor] = useState("#ebebeb")
-  let [checkHabits, setCheckHabits] = useState([])
-
-
+  const { name, sequence, record, id, isDone, token, checkHabits, setCheckHabits } = props;
+  let [boxColor, setBoxColor] = useState("#ebebeb");
+  
+let body= {done:true}
+  //let id
 
   const config = {
     headers: {
@@ -19,27 +19,27 @@ export default function TodayCard(props) {
     },
   };
 
+  function BoxAction() {
 
-function BoxAction(){
 
-
-if (checkHabits.includes(id)){
-  alert ("ja foi enviado") // fazer requisiçao de delete aqui
-}else {
-
-  setCheckHabits([...checkHabits, id])
-
-  axios.post(`https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${id}/check`, config)
-  .then((res)=>{
-    console.log("enviou check pra api")
-   
-  })
-  .catch((err)=> console.log(err.data))
+    if (checkHabits.includes(id)) {
+      alert("ja foi enviado"); // fazer requisiçao de delete aqui
   
+  
+    } else {
 
-}
-}
-
+      axios
+        .post(
+          `https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${id}/check`, body,
+          config
+        )
+        .then((res) => {
+          console.log("enviou check pra api");
+          setCheckHabits([...checkHabits, id]);
+        })
+        .catch((err) => console.log(err.data));
+    }
+  }
 
   return (
     <TodayCardSty>
@@ -48,9 +48,11 @@ if (checkHabits.includes(id)){
         <div className="info"> Sequência atual: {sequence} dias</div>
         <div className="info"> Seu recorde: {record} dias</div>
       </div>
-      <CheckSty colorprop= {checkHabits.includes(id) ? "#8FC549" : "#E7E7E7"}   
-      onClick={()=> BoxAction()}>
-        <IonIcon icon="checkbox"  />
+      <CheckSty
+        colorprop={isDone===true ? "#8FC549" : "#EBEBEB"}
+        onClick={() => BoxAction()}
+      >
+        <IonIcon icon="checkbox" />
       </CheckSty>
     </TodayCardSty>
   );
@@ -66,7 +68,7 @@ const TodayCardSty = styled.div`
   top: 177px;
   border-radius: 5px;
   padding: 13px;
-  margin-top:10px;
+  margin-top: 10px;
 
   .info {
     font-family: "Lexend Deca";
@@ -76,12 +78,10 @@ const TodayCardSty = styled.div`
     color: #666666;
     margin-top: 4px;
   }
-
 `;
-
 
 const CheckSty = styled.div`
   font-size: 72px;
-    color: ${(props) => props.colorprop};
-    border-radius: 5px;
-`
+  color: ${(props) => props.colorprop};
+  border-radius: 5px;
+`;

@@ -13,6 +13,7 @@ function TodayPage(props) {
   
   const { userImage, token } = props;
   let [todayList, setTodayList] = useState([])
+  let [checkHabits, setCheckHabits] = useState([]);
 
   const config = {
     headers: {
@@ -25,10 +26,11 @@ function TodayPage(props) {
    axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/today", config)
    .then((res)=>{
    setTodayList(res.data)
+   console.log(res.data)
   })
    .catch((err)=>console.log(err.data))
 
-  },[])
+  },[checkHabits])
 
   return (
     <ScreenStyle>
@@ -36,7 +38,7 @@ function TodayPage(props) {
       <MainStyle>
         <FeedSty>
           <TodayBar />
-           {todayList.map((t, id)=><TodayCard key={id} name={t.name} sequence={t.currentSequence} record={t.highestSequence} id={t.id} token={token}/>)} 
+           {todayList.map((t, i)=><TodayCard key={i} name={t.name} sequence={t.currentSequence} record={t.highestSequence} id={t.id} isDone={t.done} checkHabits={checkHabits} setCheckHabits={setCheckHabits} token={token}/>)} 
         </FeedSty>
         <Footer />
       </MainStyle>
