@@ -16,10 +16,7 @@ function HabitsPage(props) {
   let [habitLength, setHabitLength] = useState("")
   let [habitsArray, setHabitsArray] = useState([]);
   let [updateDeleted, setUpdateDeleted] = useState(false)
-
-  
-let counter=0
-
+  let counter=0
 
   const config = {
     headers: {

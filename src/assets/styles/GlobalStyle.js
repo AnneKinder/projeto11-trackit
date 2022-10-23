@@ -51,10 +51,11 @@ table {
 }
 body{
 	width: 100vw;
-  min-height: 100vh;
+  min-height: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: #F2F2F2;
 
 	
 }
@@ -62,7 +63,6 @@ body{
 	font-family: 'Lexend Deca', sans-serif;
 	box-sizing: border-box;
 }
-
 
   .action-container {
     display: flex;
@@ -73,9 +73,5 @@ body{
   }
 
 
-  h3{
-	color:red;
-	font-size: 20px;
-  }
 `;
 export default GlobalStyle;

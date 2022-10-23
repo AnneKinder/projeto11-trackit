@@ -15,9 +15,11 @@ export default function Habit(props) {
 
 
   function deletePost(habit, habitId) {
-    alert(habit.name) //titulo do habito
-    alert(habit.id) //numero esquisitao
-    alert (habitId) //id do habito na habitsArray
+    //alert(habit.name) //titulo do habito
+    //alert(habit.id) //numero esquisitao
+   // alert (habitId) //id do habito na habitsArray
+
+   if (window.confirm("Você tem certeza que deseja excluir o hábito?")) {
 
    axios.delete(
      `https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${habit.id}`, config
@@ -25,6 +27,11 @@ export default function Habit(props) {
 
   setHabitsArray(habitsArray.filter((item) => item.id !== habitId));
   setUpdateDeleted(true)
+
+} else {
+  console.log('Thing was not saved to the database.');
+}
+
   }
 
   return (
