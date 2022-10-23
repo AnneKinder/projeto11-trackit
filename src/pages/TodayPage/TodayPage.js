@@ -13,7 +13,6 @@ import {AuthContext} from "../../context/auth.js"
 function TodayPage() {
   const {user, setUser} = React.useContext(AuthContext)
   const {result, setResult} = React.useContext(AuthContext)
-  const {progressB, setProgressB} = React.useContext(AuthContext)
 
   let [todayList, setTodayList] = useState([]);
   let [checkHabits, setCheckHabits] = useState([]);
@@ -40,8 +39,7 @@ function TodayPage() {
   }, [checkHabits]);
 
   useEffect(() => {
-    setResult((habitosFeitos.length * 100) / todayList.length);
-    setProgressB((habitosFeitos.length * 100) / todayList.length)
+    setResult(Math.round((habitosFeitos.length * 100) / todayList.length));
   });
 
   return (
