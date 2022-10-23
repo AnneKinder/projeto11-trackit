@@ -7,7 +7,6 @@ import BlueTitle from "../../assets/styles/BlueTitle.js";
 export default function TodayBar() {
   const {result, setResult} = React.useContext(AuthContext)
   let [today, setToday] = useState({ day: "Segunda", date: "17/10" });
-
   return (
     <TodayBarSty>
       <BlueTitle>
@@ -15,10 +14,9 @@ export default function TodayBar() {
         {today.day}, {today.date}
       </BlueTitle>
 
-      {result !== 0 ? <SomeSty>{result}% dos hábitos concluídos</SomeSty> : <NothingSty>Nenhum hábito concluído ainda </NothingSty>
+      {isNaN(result) ?  (<NothingSty>Nenhum hábito concluído ainda </NothingSty>) : (result !== 0 ? <SomeSty>{result}% dos hábitos concluídos</SomeSty> : <NothingSty>Nenhum hábito concluído ainda </NothingSty>)
       }
 
-   
     </TodayBarSty>
   );
 }
