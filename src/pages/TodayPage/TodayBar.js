@@ -4,7 +4,8 @@ import BlueTitle from "../../assets/styles/BlueTitle.js"
 
 
 
-export default function TodayBar() {
+export default function TodayBar(props) {
+  const {result} = props
   let [today, setToday] = useState({ day: "Segunda", date: "17/10" });
 
   return (
@@ -14,7 +15,13 @@ export default function TodayBar() {
         {" "}
         {today.day}, {today.date}
       </BlueTitle>
-      <NothingSty>Nenhum hábito concluído ainda </NothingSty>
+
+
+{result!==0 ? <div>{result}%</div> : <NothingSty>Nenhum hábito concluído ainda </NothingSty>}
+      
+    
+
+
       <SomeSty></SomeSty>
     </TodayBarSty>
   );
