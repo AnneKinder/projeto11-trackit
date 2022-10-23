@@ -15,9 +15,6 @@ export default function Habit(props) {
 
 
   function deletePost(habit, habitId) {
-    //alert(habit.name) //titulo do habito
-    //alert(habit.id) //numero esquisitao
-   // alert (habitId) //id do habito na habitsArray
 
    if (window.confirm("Você tem certeza que deseja excluir o hábito?")) {
 

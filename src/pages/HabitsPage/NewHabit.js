@@ -46,7 +46,7 @@ function cancelHabit(){
 function addHabit(){
 
 
-if(newTitle===null || newHabitDays=== null){
+if(!newTitle || !newHabitDays){
   alert("Insira hábito e dias válidos.")
   
 }else{
