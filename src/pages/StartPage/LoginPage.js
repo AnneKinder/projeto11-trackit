@@ -33,14 +33,14 @@ function LoginPage(props) {
       )
       .then((res) => {
         setToken(res.data.token);
-        setUserImage(res.data.image)
         setUser(res.data)
         navigate("/hoje");
         setDisabled(false);
         
       })
       .catch((err) => {
-        alert(err.response.data.message);
+        alert(err.data);
+        console.log(err.message)
         setDisabled(false);
         
       });

@@ -1,3 +1,4 @@
+import React from "react";
 import styled from "styled-components";
 import TextSty from "../../assets/styles/TextSty";
 import { IonIcon } from "@ionic/react";
@@ -9,6 +10,7 @@ import axios from "axios";
 export default function TodayCard(props) {
   const { name, sequence, record, id, isDone, token, checkHabits, setCheckHabits } = props;
  
+
   let bodyCheck= {done:true}
   let bodyUncheck={done:false}
 

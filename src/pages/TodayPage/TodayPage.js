@@ -1,3 +1,4 @@
+import React from "react";
 import styled from "styled-components";
 import NavBar from "../../components/NavBar.js";
 import Footer from "../../components/Footer.js";
@@ -7,8 +8,10 @@ import TodayBar from "./TodayBar.js";
 import TodayCard from "./TodayCard.js";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import {AuthContext} from "../../context/auth.js"
 
 function TodayPage(props) {
+  const {progressB, setProgressB} = React.useContext(AuthContext)
   const { userImage, token } = props;
   let [todayList, setTodayList] = useState([]);
   let [checkHabits, setCheckHabits] = useState([]);
@@ -29,13 +32,13 @@ function TodayPage(props) {
       .then((res) => {
         setTodayList(res.data);
         setHabitosFeitos(res.data.filter((x) => x.done === true));
-        // calculate()
       })
       .catch((err) => console.log(err.data));
   }, [checkHabits]);
 
   useEffect(() => {
     setResult((habitosFeitos.length * 100) / todayList.length);
+    setProgressB((habitosFeitos.length * 100) / todayList.length)
   });
 
   return (
