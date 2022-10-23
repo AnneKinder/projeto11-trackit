@@ -1,3 +1,5 @@
+import React from "react";
+import { AuthContext } from "../../context/auth.js";
 import styled from "styled-components";
 import TextSty from "../../assets/styles/TextSty.js";
 import { IonIcon } from "@ionic/react";
@@ -5,29 +7,27 @@ import WEEKDAYS from "../../constants/WEEKDAYS.js";
 import axios from "axios";
 
 export default function Habit(props) {
-  const { habitsArray, setHabitsArray, token, setUpdateDeleted} = props;
+  const { habitsArray, setHabitsArray, setUpdateDeleted } = props;
+  const {user, setUser} = React.useContext(AuthContext)
 
   const config = {
     headers: {
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${user.token}`,
     },
   };
 
-
   function deletePost(habit, habitId) {
+    if (window.confirm("Você tem certeza que deseja excluir o hábito?")) {
+      axios.delete(
+        `https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${habit.id}`,
+        config
+      );
 
-   if (window.confirm("Você tem certeza que deseja excluir o hábito?")) {
-
-   axios.delete(
-     `https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${habit.id}`, config
-    );
-
-  setHabitsArray(habitsArray.filter((item) => item.id !== habit.id));
-  setUpdateDeleted(true)
-
-} else{
-  console.log("Not Deleted")
-}
+      setHabitsArray(habitsArray.filter((item) => item.id !== habit.id));
+      setUpdateDeleted(true);
+    } else {
+      console.log("Not Deleted");
+    }
   }
 
   return (
@@ -36,7 +36,10 @@ export default function Habit(props) {
         <HabitSty habit={habit} habitId={habitId} key={habitId}>
           <div className="habit-top">
             <TextSty> {habit.name} </TextSty>
-            <div onClick={() => deletePost(habit, habitId)} className="trashcan">
+            <div
+              onClick={() => deletePost(habit, habitId)}
+              className="trashcan"
+            >
               <IonIcon icon="trash-outline" />
             </div>
           </div>

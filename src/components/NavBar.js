@@ -1,17 +1,16 @@
-import { renderMatches, useNavigate } from "react-router-dom";
+import React from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
-import pic from "../assets/img/nyra.jpeg";
-import { useContext } from "react";
+import { AuthContext } from "../context/auth";
 
-export default function NavBar(props) {
-  //const {userImage} = useContext(ImageContext)
-  const navigate = useNavigate();
-  const {userImage} = props
+export default function NavBar() {
+  const {user, setUser} = React.useContext(AuthContext)
+  const navigate = useNavigate()
 
   return (
     <NavbarStyle>
       <p onClick={() => navigate("/")}>TrackIt</p>
-      <img src={userImage} alt="pic" />
+      <img src={user.image} alt="pic" />
     </NavbarStyle>
   );
 }

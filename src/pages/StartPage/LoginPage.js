@@ -34,7 +34,7 @@ function LoginPage(props) {
       .then((res) => {
         setToken(res.data.token);
         setUserImage(res.data.image)
-        setUser(res.data.image)
+        setUser(res.data)
         navigate("/hoje");
         setDisabled(false);
         

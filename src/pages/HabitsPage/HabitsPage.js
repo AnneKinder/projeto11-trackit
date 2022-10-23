@@ -1,7 +1,7 @@
 
 import React from "react";
 import styled from "styled-components";
-import { useState, useContext, useEffect} from "react";
+import { useState, useEffect} from "react";
 import axios from "axios";
 import NavBar from "../../components/NavBar.js";
 import Footer from "../../components/Footer.js";
@@ -14,8 +14,7 @@ import { AuthContext } from "../../context/auth.js";
 
 
 
-function HabitsPage(props) {
-  const { userImage, token} = props;
+function HabitsPage() {
   const {user, setUser} = React.useContext(AuthContext)
 
   let [habitAdded, setHabitAdded] = useState(0)
@@ -26,7 +25,7 @@ function HabitsPage(props) {
 
   const config = {
     headers: {
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${user.token}`,
     },
   };
 
@@ -45,13 +44,12 @@ function HabitsPage(props) {
 
   return (
     <ScreenStyle>
-      <NavBar userImage={userImage} />
-      
+      <NavBar userImage={user.image} />
       <MainStyle>
         <FeedSty>
-         <NewHabit token={token} habitAdded={habitAdded} setHabitAdded={setHabitAdded} counter={counter}/>
-         {/* <img src={user}/>  */}
-          <Habit habitsArray={habitsArray} setHabitsArray={setHabitsArray} token={token} setUpdateDeleted={setUpdateDeleted}/>
+         <NewHabit habitAdded={habitAdded} setHabitAdded={setHabitAdded} counter={counter}/>
+    
+          <Habit habitsArray={habitsArray} setHabitsArray={setHabitsArray} setUpdateDeleted={setUpdateDeleted}/>
           {counter!==0 ? <NoHabit /> : ""  }
           
         </FeedSty>

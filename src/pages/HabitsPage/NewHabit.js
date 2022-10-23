@@ -1,3 +1,5 @@
+import React from "react";
+import { AuthContext } from "../../context/auth.js";
 import styled from "styled-components";
 import WEEKDAYS from "../../constants/WEEKDAYS.js";
 import { useState } from "react";
@@ -5,7 +7,8 @@ import AddBar from "./AddBar.js";
 import axios from "axios";
 
 export default function NewHabit(props) {
-  const {token, setHabitAdded, habitAdded, counter} = props
+  const {setHabitAdded, habitAdded, counter} = props
+  const {user, setUser} = React.useContext(AuthContext)
   let [newTitle, setNewTitle] = useState("");
   let [newHabitDays, setnewHabitDays] = useState([]);
   let [dayColor, setDayColor] = useState("#ffffff");
@@ -13,7 +16,7 @@ export default function NewHabit(props) {
   
   const config = {
     headers: {
-      "Authorization": `Bearer ${token}`
+      "Authorization": `Bearer ${user.token}`
     }
   }
   
