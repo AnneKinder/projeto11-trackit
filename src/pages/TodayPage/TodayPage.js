@@ -12,25 +12,7 @@ import { useSearchParams } from "react-router-dom";
 function TodayPage(props) {
   
   const { userImage, token } = props;
-  const arrayFake = [
-    {
-      id: 3,
-      name: "Acordar cedo",
-      done: true,
-      currentSequence: 1,
-      highestSequence: 6,
-    },
-    {
-      id: 5,
-      name: "Correr",
-      done: false,
-      currentSequence: 0,
-      highestSequence: 3,
-    },
-  ];
-
-
-let [todayList, setTodayList] = useState([])
+  let [todayList, setTodayList] = useState([])
 
   const config = {
     headers: {
@@ -42,7 +24,6 @@ let [todayList, setTodayList] = useState([])
 
    axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/today", config)
    .then((res)=>{
-   console.log(res.data)
    setTodayList(res.data)
   })
    .catch((err)=>console.log(err.data))
@@ -55,7 +36,7 @@ let [todayList, setTodayList] = useState([])
       <MainStyle>
         <FeedSty>
           <TodayBar />
-           {arrayFake.map((t)=><TodayCard name={t.name} sequence={t.currentSequence} record={t.highestSequence} id={t.id} token={token}/>)} 
+           {todayList.map((t)=><TodayCard name={t.name} sequence={t.currentSequence} record={t.highestSequence} id={t.id} token={token}/>)} 
         </FeedSty>
         <Footer />
       </MainStyle>
