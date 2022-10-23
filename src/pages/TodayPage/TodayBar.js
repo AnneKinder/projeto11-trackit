@@ -1,28 +1,22 @@
 import styled from "styled-components";
 import { useState } from "react";
-import BlueTitle from "../../assets/styles/BlueTitle.js"
-
-
+import BlueTitle from "../../assets/styles/BlueTitle.js";
 
 export default function TodayBar(props) {
-  const {result} = props
+  const { result } = props;
   let [today, setToday] = useState({ day: "Segunda", date: "17/10" });
 
   return (
     <TodayBarSty>
-     
       <BlueTitle>
         {" "}
         {today.day}, {today.date}
       </BlueTitle>
 
+      {result !== 0 ? <SomeSty>{result}% dos hábitos concluídos</SomeSty> : <NothingSty>Nenhum hábito concluído ainda </NothingSty>
+      }
 
-{result!==0 ? <div>{result}%</div> : <NothingSty>Nenhum hábito concluído ainda </NothingSty>}
-      
-    
-
-
-      <SomeSty></SomeSty>
+   
     </TodayBarSty>
   );
 }
@@ -36,7 +30,6 @@ const TodayBarSty = styled.div`
   padding: 0 2px;
   margin: 8px 0;
   font-family: "Lexend Deca";
-
 `;
 
 const NothingSty = styled.p`
@@ -49,12 +42,11 @@ const NothingSty = styled.p`
 `;
 
 const SomeSty = styled.p`
-font-family: 'Lexend Deca';
-font-style: normal;
-font-weight: 400;
-font-size: 17.976px;
-line-height: 22px;
-color: #8FC549;
-
-
+  font-family: "Lexend Deca";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 17.976px;
+  line-height: 22px;
+  color: #8fc549;
+  margin-top:8px;
 `;
