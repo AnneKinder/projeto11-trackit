@@ -60,6 +60,7 @@ axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits",
               setIsOpen(false)
               setHabitAdded(habitAdded+1)
               counter +=1
+              
             })
             .catch((err)=>console.log(err.data))
   
@@ -74,7 +75,6 @@ axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits",
       <AddBar setIsOpen={setIsOpen} />
       {isOpen===false ? <div></div> : 
       <NewHabitSty>
-        {/* {dayColor === "red" ? <h1> vermelho </h1> : <h1> é azul </h1>} */}
 
         <input
           type="text"
