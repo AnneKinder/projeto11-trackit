@@ -7,10 +7,9 @@ import { useNavigate } from "react-router-dom";
 
 function LoginPage(props) {
   const navigate = useNavigate();
-  const {setToken} = props
+  const {setUserImage, setToken} = props
   let [email, setMail] = useState("");
   let [password, setPassword] = useState("");
-
   let [onload, setOnload] = useState(false);
   let [disabled, setDisabled] = useState("");
 
@@ -32,6 +31,7 @@ function LoginPage(props) {
         navigate("/habitos");
         setOnload(true);
         setDisabled(false);
+        setUserImage(res.data.image)
       })
       .catch((err) => {
         setDisabled(false);

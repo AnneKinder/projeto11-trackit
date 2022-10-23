@@ -18,8 +18,8 @@ function App() {
       <BrowserRouter>
         <GlobalStyle />
         <Routes>
-          <Route path="/" element={<LoginPage setToken={setToken} />} />
-          <Route path="/cadastro" element={<SignUpPage setUserImage={setUserImage} />}/>
+          <Route path="/" element={<LoginPage setUserImage={setUserImage}  setToken={setToken} />} />
+          <Route path="/cadastro" element={<SignUpPage />}/>
           <Route path="/habitos" element={<HabitsPage userImage={userImage} token={token} />}/>
           <Route path="/hoje" element={<TodayPage />} />
           <Route path="/historico" element={<HistoryPage />} />

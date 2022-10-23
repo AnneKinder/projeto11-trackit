@@ -9,8 +9,6 @@ import ImageContext from "../../context/ImageContext.js";
 
 function SignUpPage(props) {
   //const {setUserImage} = useContext(ImageContext)
-  const { setUserImage } = props;
-  //const { setTeste } = useContext(ImageContext);
 
   const navigate = useNavigate();
 
@@ -34,7 +32,6 @@ function SignUpPage(props) {
         navigate("/");
         setOnload(true);
         setDisabled(false);
-        setUserImage(form.image);
         
       })
       .catch((err) => {

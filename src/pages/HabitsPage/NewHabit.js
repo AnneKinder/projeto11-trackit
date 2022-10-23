@@ -40,7 +40,6 @@ export default function NewHabit(props) {
 
 
 function cancelHabit(){  
-  console.log("cancelado")
   setIsOpen(false)
 }
 

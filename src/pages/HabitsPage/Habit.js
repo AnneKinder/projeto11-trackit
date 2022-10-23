@@ -25,13 +25,12 @@ export default function Habit(props) {
      `https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${habit.id}`, config
     );
 
-  setHabitsArray(habitsArray.filter((item) => item.id !== habitId));
+  setHabitsArray(habitsArray.filter((item) => item.id !== habit.id));
   setUpdateDeleted(true)
 
-} else {
-  console.log('Thing was not saved to the database.');
+} else{
+  console.log("Not Deleted")
 }
-
   }
 
   return (
