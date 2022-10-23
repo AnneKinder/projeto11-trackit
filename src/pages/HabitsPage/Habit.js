@@ -7,8 +7,10 @@ import WEEKDAYS from "../../constants/WEEKDAYS.js";
 import axios from "axios";
 
 export default function Habit(props) {
-  const { habitsArray, setHabitsArray, setUpdateDeleted } = props;
+  const {setUpdateDeleted } = props;
   const {user, setUser} = React.useContext(AuthContext)
+  const {habitsArray, setHabitsArray} = React.useContext(AuthContext)
+
 
   const config = {
     headers: {

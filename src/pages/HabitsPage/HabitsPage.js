@@ -16,12 +16,13 @@ import { AuthContext } from "../../context/auth.js";
 
 function HabitsPage() {
   const {user, setUser} = React.useContext(AuthContext)
+  const {habitsArray, setHabitsArray} = React.useContext(AuthContext)
 
-  let [habitAdded, setHabitAdded] = useState(0)
-  let [habitLength, setHabitLength] = useState("")
-  let [habitsArray, setHabitsArray] = useState([]);
-  let [updateDeleted, setUpdateDeleted] = useState(false)
-  let counter=0
+
+  const [habitAdded, setHabitAdded] = useState(0)
+  const [habitLength, setHabitLength] = useState("")
+  const [updateDeleted, setUpdateDeleted] = useState(false)
+  const counter=0
 
   const config = {
     headers: {
@@ -48,7 +49,7 @@ function HabitsPage() {
       <MainStyle>
         <FeedSty>
          <NewHabit habitAdded={habitAdded} setHabitAdded={setHabitAdded} counter={counter}/>
-          <Habit habitsArray={habitsArray} setHabitsArray={setHabitsArray} setUpdateDeleted={setUpdateDeleted}/>
+          <Habit  setUpdateDeleted={setUpdateDeleted}/>
           {counter!==0 ? <NoHabit /> : ""  }
         </FeedSty>
         <Footer  />

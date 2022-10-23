@@ -14,7 +14,7 @@ export default function TodayBar() {
         {today.day}, {today.date}
       </BlueTitle>
 
-      {isNaN(result) ?  (<NothingSty>Nenhum hábito concluído ainda </NothingSty>) : (result !== 0 ? <SomeSty>{result}% dos hábitos concluídos</SomeSty> : <NothingSty>Nenhum hábito concluído ainda </NothingSty>)
+      {isNaN(result) ? (<NothingSty>Nenhum hábito concluído ainda </NothingSty>) : (result !== 0 ? <SomeSty>{result}% dos hábitos concluídos</SomeSty> : <NothingSty>Nenhum hábito concluído ainda </NothingSty>)
       }
 
     </TodayBarSty>

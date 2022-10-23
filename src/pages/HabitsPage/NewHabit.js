@@ -9,11 +9,11 @@ import axios from "axios";
 export default function NewHabit(props) {
   const { setHabitAdded, habitAdded, counter } = props;
   const { user, setUser } = React.useContext(AuthContext);
-  let [newTitle, setNewTitle] = useState("");
-  let [newHabitDays, setnewHabitDays] = useState([]);
-  let [dayColor, setDayColor] = useState("#ffffff");
-  let [isOpen, setIsOpen] = useState(false);
-  let [disabled, setDisabled] = useState(false)
+  const [newTitle, setNewTitle] = useState("");
+  const [newHabitDays, setnewHabitDays] = useState([]);
+  const [dayColor, setDayColor] = useState("#ffffff");
+  const [isOpen, setIsOpen] = useState(false);
+  const [disabled, setDisabled] = useState(false)
 
   const config = {
     headers: {
