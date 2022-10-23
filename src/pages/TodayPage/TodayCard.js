@@ -3,15 +3,14 @@ import TextSty from "../../assets/styles/TextSty";
 import { IonIcon } from "@ionic/react";
 import { useState } from "react";
 
-export default function TodayCard() {
-  let [sequence, setSequence] = useState("2");
-  let [record, setRecord] = useState("5");
-  let titulo = "titulo do hábito"
+export default function TodayCard(props) {
+  const {name, sequence, record} = props
+
 
   return (
     <TodayCardSty>
       <div className="left">
-        <TextSty> {titulo}</TextSty>
+        <TextSty> {name}</TextSty>
         <div className="info"> Sequência atual: {sequence} dias</div>
         <div className="info"> Seu recorde: {record} dias</div>
       </div>
@@ -32,6 +31,7 @@ const TodayCardSty = styled.div`
   top: 177px;
   border-radius: 5px;
   padding: 13px;
+  margin-top:10px;
 
   .info {
     font-family: "Lexend Deca";

@@ -1,11 +1,20 @@
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 import ProgressBar from "./ProgressBar.js"
+
+
+
 export default function NavBar() {
+  const navigate = useNavigate();
+
+
+
+
   return (
     <FooterStyle>
      
       <p> Hábitos</p>
-      <ProgressBar />
+      <div onClick={() => navigate("/hoje")}> <ProgressBar /></div>
       <p> Histórico</p>
     </FooterStyle>
   );

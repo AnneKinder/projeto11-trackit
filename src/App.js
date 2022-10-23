@@ -21,7 +21,7 @@ function App() {
           <Route path="/" element={<LoginPage setUserImage={setUserImage}  setToken={setToken} />} />
           <Route path="/cadastro" element={<SignUpPage />}/>
           <Route path="/habitos" element={<HabitsPage userImage={userImage} token={token} />}/>
-          <Route path="/hoje" element={<TodayPage />} />
+          <Route path="/hoje" element={<TodayPage userImage={userImage} token={token} />}/>
           <Route path="/historico" element={<HistoryPage />} />
         </Routes>
       </BrowserRouter>

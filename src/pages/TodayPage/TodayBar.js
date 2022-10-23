@@ -3,11 +3,13 @@ import { useState } from "react";
 import BlueTitle from "../../assets/styles/BlueTitle.js"
 
 
+
 export default function TodayBar() {
   let [today, setToday] = useState({ day: "Segunda", date: "17/10" });
 
   return (
     <TodayBarSty>
+     
       <BlueTitle>
         {" "}
         {today.day}, {today.date}

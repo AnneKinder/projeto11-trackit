@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext, useEffect} from "react";
 import axios from "axios";
 import NavBar from "../../components/NavBar.js";
 import Footer from "../../components/Footer.js";
