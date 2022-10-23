@@ -2,7 +2,6 @@ import { renderMatches, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import pic from "../assets/img/nyra.jpeg";
 import { useContext } from "react";
-import ImageContext from "../context/ImageContext.js";
 
 export default function NavBar(props) {
   //const {userImage} = useContext(ImageContext)

@@ -6,6 +6,7 @@ import HabitsPage from "./pages/HabitsPage/HabitsPage";
 import TodayPage from "./pages/TodayPage/TodayPage";
 import HistoryPage from "./pages/HistoryPage/HistoryPage";
 import { useState, useContext } from "react";
+import { AuthProvider } from "./context/auth";
 
 
 function App() {
@@ -14,7 +15,7 @@ function App() {
 
   return (
     <>
-  
+  <AuthProvider>
       <BrowserRouter>
         <GlobalStyle />
         <Routes>
@@ -25,6 +26,7 @@ function App() {
           <Route path="/historico" element={<HistoryPage />} />
         </Routes>
       </BrowserRouter>
+      </AuthProvider>
     </>
   );
 }

@@ -1,3 +1,4 @@
+
 import styled from "styled-components";
 import { useState, useContext, useEffect} from "react";
 import axios from "axios";
@@ -9,8 +10,9 @@ import Habit from "./Habit.js";
 import ScreenStyle from "../../assets/styles/ScreenStyle.js";
 import MainStyle from "../../assets/styles/MainStyle.js";
 
+
+
 function HabitsPage(props) {
-  //const { userImage } = useContext(ImageContext);
   const { userImage, token} = props;
   let [habitAdded, setHabitAdded] = useState(0)
   let [habitLength, setHabitLength] = useState("")
@@ -40,9 +42,11 @@ function HabitsPage(props) {
   return (
     <ScreenStyle>
       <NavBar userImage={userImage} />
+      
       <MainStyle>
         <FeedSty>
          <NewHabit token={token} habitAdded={habitAdded} setHabitAdded={setHabitAdded} counter={counter}/>
+         <div>oi</div>
           <Habit habitsArray={habitsArray} setHabitsArray={setHabitsArray} token={token} setUpdateDeleted={setUpdateDeleted}/>
           {counter!==0 ? <NoHabit /> : ""  }
           

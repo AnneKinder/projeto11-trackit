@@ -1,6 +1,7 @@
+import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
-import { useState, useEffect, useContext } from "react";
+import {AuthContext} from "../../context/auth.js"
+import { useState} from "react";
 import axios from "axios";
 import logo from "../../assets/img/logo.png";
 import { useNavigate } from "react-router-dom";
@@ -8,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 function LoginPage(props) {
   const navigate = useNavigate();
   const {setUserImage, setToken} = props
+//const [user, setUser] = React.useContext(AuthContext)
   let [email, setMail] = useState("");
   let [password, setPassword] = useState("");
   let [onload, setOnload] = useState(false);
@@ -28,6 +30,7 @@ function LoginPage(props) {
       )
       .then((res) => {
         setToken(res.data.token);
+        //setUser(res.data)
         navigate("/habitos");
         setOnload(true);
         setDisabled(false);
