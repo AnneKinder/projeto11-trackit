@@ -12,7 +12,7 @@ import MainStyle from "../../assets/styles/MainStyle.js";
 function HabitsPage(props) {
   //const { userImage } = useContext(ImageContext);
   const { userImage, token} = props;
-  let [habitAdded, setHabitAdded] = useState(false)
+  let [habitAdded, setHabitAdded] = useState(0)
   let [habitLength, setHabitLength] = useState("")
   let [habitsArray, setHabitsArray] = useState([]);
   let [updateDeleted, setUpdateDeleted] = useState(false)
@@ -42,7 +42,7 @@ function HabitsPage(props) {
       <NavBar userImage={userImage} />
       <MainStyle>
         <FeedSty>
-         <NewHabit token={token} setHabitAdded={setHabitAdded} counter={counter}/>
+         <NewHabit token={token} habitAdded={habitAdded} setHabitAdded={setHabitAdded} counter={counter}/>
           <Habit habitsArray={habitsArray} setHabitsArray={setHabitsArray} token={token} setUpdateDeleted={setUpdateDeleted}/>
           {counter!==0 ? <NoHabit /> : ""  }
           

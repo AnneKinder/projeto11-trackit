@@ -5,7 +5,7 @@ import AddBar from "./AddBar.js";
 import axios from "axios";
 
 export default function NewHabit(props) {
-  const {token, setHabitAdded, counter} = props
+  const {token, setHabitAdded, habitAdded, counter} = props
   let [newTitle, setNewTitle] = useState("");
   let [newHabitDays, setnewHabitDays] = useState([]);
   let [dayColor, setDayColor] = useState("#ffffff");
@@ -55,11 +55,10 @@ if(!newTitle || !newHabitDays){
 axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits",
             body, config)
             .then(res =>{
-             // console.log("foi pra api")
               setNewTitle("")
               setnewHabitDays("")
               setIsOpen(false)
-              setHabitAdded(true)
+              setHabitAdded(habitAdded+1)
               counter +=1
             })
             .catch((err)=>console.log(err.data))
