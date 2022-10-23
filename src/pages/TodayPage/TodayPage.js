@@ -10,20 +10,22 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import {AuthContext} from "../../context/auth.js"
 
-function TodayPage(props) {
+function TodayPage() {
   const {user, setUser} = React.useContext(AuthContext)
+  const {result, setResult} = React.useContext(AuthContext)
+
   const {progressB, setProgressB} = React.useContext(AuthContext)
-  const { userImage } = props;
   let [todayList, setTodayList] = useState([]);
   let [checkHabits, setCheckHabits] = useState([]);
   let [habitosFeitos, setHabitosFeitos] = useState([]);
-  let [result, setResult] = useState(0);
+
   const config = {
     headers: {
       Authorization: `Bearer ${user.token}`,
     },
   };
-
+  
+  
   useEffect(() => {
     axios
       .get(

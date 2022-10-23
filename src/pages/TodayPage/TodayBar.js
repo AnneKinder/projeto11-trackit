@@ -1,9 +1,11 @@
+import React from "react";
 import styled from "styled-components";
 import { useState } from "react";
+import { AuthContext } from "../../context/auth.js";
 import BlueTitle from "../../assets/styles/BlueTitle.js";
 
-export default function TodayBar(props) {
-  const { result } = props;
+export default function TodayBar() {
+  const {result, setResult} = React.useContext(AuthContext)
   let [today, setToday] = useState({ day: "Segunda", date: "17/10" });
 
   return (

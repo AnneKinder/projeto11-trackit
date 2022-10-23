@@ -10,7 +10,6 @@ import { AuthProvider } from "./context/auth";
 
 
 function App() {
-  let [token, setToken] = useState("");
 
   return (
     <>
@@ -18,10 +17,10 @@ function App() {
       <BrowserRouter>
         <GlobalStyle />
         <Routes>
-          <Route path="/" element={<LoginPage setToken={setToken} />} />
+          <Route path="/" element={<LoginPage />} />
           <Route path="/cadastro" element={<SignUpPage />}/>
           <Route path="/habitos" element={<HabitsPage />}/>
-          <Route path="/hoje" element={<TodayPage token={token} />}/>
+          <Route path="/hoje" element={<TodayPage />}/>
           <Route path="/historico" element={<HistoryPage />} />
         </Routes>
       </BrowserRouter>

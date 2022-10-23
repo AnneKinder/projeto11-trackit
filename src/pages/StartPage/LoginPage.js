@@ -7,9 +7,8 @@ import logo from "../../assets/img/logo.png";
 import { useNavigate } from "react-router-dom";
 import { ColorFill } from "react-ionicons";
 
-function LoginPage(props) {
+function LoginPage() {
   const navigate = useNavigate();
-  const {setUserImage, setToken} = props
   const {user, setUser} = React.useContext(AuthContext)
   const [email, setMail] = useState("");
   const [password, setPassword] = useState("");
@@ -32,7 +31,6 @@ function LoginPage(props) {
         body
       )
       .then((res) => {
-        setToken(res.data.token);
         setUser(res.data)
         navigate("/hoje");
         setDisabled(false);

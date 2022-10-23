@@ -4,19 +4,21 @@ import TextSty from "../../assets/styles/TextSty";
 import { IonIcon } from "@ionic/react";
 import { useState } from "react";
 import { Checkbox } from "react-ionicons";
+import { AuthContext } from "../../context/auth";
 import axios from "axios";
 
 
 export default function TodayCard(props) {
-  const { name, sequence, record, id, isDone, token, checkHabits, setCheckHabits } = props;
- 
+  const { name, sequence, record, id, isDone, checkHabits, setCheckHabits } = props;
+  const {user, setUser} = React.useContext(AuthContext)
+
 
   let bodyCheck= {done:true}
   let bodyUncheck={done:false}
 
   const config = {
     headers: {
-      Authorization: `Bearer ${token}`,
+      Authorization: `Bearer ${user.token}`,
     },
   };
 

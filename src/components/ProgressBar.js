@@ -12,6 +12,8 @@ import { AuthContext } from "../context/auth";
 export default function App() {
   const [step, setStep] = useState(0);
   const {progressB, setProgress} = React.useContext(AuthContext)
+  const {result, setResult} = React.useContext(AuthContext)
+
 
 //  // ${percentage}%
 
@@ -28,7 +30,7 @@ export default function App() {
       <ProCont>
       <div className="progress-container">
        
-        <CircularProgressbar value={progressB} 
+        <CircularProgressbar value={result} 
         text={
           
           `Hoje`     
