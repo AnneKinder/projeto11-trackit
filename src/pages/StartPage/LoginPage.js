@@ -5,15 +5,16 @@ import { useState} from "react";
 import axios from "axios";
 import logo from "../../assets/img/logo.png";
 import { useNavigate } from "react-router-dom";
+import { ColorFill } from "react-ionicons";
 
 function LoginPage(props) {
   const navigate = useNavigate();
   const {setUserImage, setToken} = props
-//const [user, setUser] = React.useContext(AuthContext)
-  let [email, setMail] = useState("");
-  let [password, setPassword] = useState("");
-  let [onload, setOnload] = useState(false);
-  let [disabled, setDisabled] = useState("");
+  const {user, setUser} = React.useContext(AuthContext)
+  const [email, setMail] = useState("");
+  const [password, setPassword] = useState("");
+  const [onload, setOnload] = useState(false);
+  const [disabled, setDisabled] = useState("");
 
   let body = {
     email: email,
@@ -23,6 +24,9 @@ function LoginPage(props) {
   function sendData(e) {
     e.preventDefault();
 
+    setDisabled(true)
+
+
     axios
       .post(
         "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login",
@@ -30,25 +34,26 @@ function LoginPage(props) {
       )
       .then((res) => {
         setToken(res.data.token);
-        //setUser(res.data)
-        navigate("/habitos");
+        setUserImage(res.data.image)
+        setUser(res.data.image)
+        navigate("/hoje");
         setOnload(true);
         setDisabled(false);
-        setUserImage(res.data.image)
+        
       })
       .catch((err) => {
-        setDisabled(false);
         alert(err.response.data.message);
+        setDisabled(false);
+        
       });
   }
 
-  if (onload) {
-    alert("loaddd");
-    setDisabled(true);
-  }
+
 
   return (
-    <LoginStyle>
+    <LoginStyle buttoncolor={disabled===true ? "lightgrey" : "#52b6ff"} inputcolor={disabled===true ? "#red" : "#E5E5E5"} >
+     
+     {/*  */}
       <img src={logo} alt="logo" />
       <form onSubmit={sendData}>
         <input
@@ -69,7 +74,7 @@ function LoginPage(props) {
           required
           disabled={disabled}
         />
-        <button type="submit" disabled={disabled}>
+        <button  type="submit" disabled={disabled}>
           {" "}
           Entrar{" "}
         </button>
@@ -106,7 +111,7 @@ const LoginStyle = styled.div`
     height: 45px;
     left: 36px;
     top: 279px;
-    background: #ffffff;
+    background-color: ${props=> props.inputcolor}; 
     border: 1px solid #d5d5d5;
     border-radius: 5px;
     font-weight: 400;
@@ -122,7 +127,8 @@ const LoginStyle = styled.div`
     height: 45px;
     left: 36px;
     top: 381px;
-    background: #52b6ff;
+    background: ${props=> props.buttoncolor};
+    /* #52b6ff */
     border-radius: 4.63636px;
     font-weight: 400;
     font-size: 20.976px;

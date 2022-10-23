@@ -1,4 +1,5 @@
 
+import React from "react";
 import styled from "styled-components";
 import { useState, useContext, useEffect} from "react";
 import axios from "axios";
@@ -9,11 +10,14 @@ import NoHabit from "./NoHabit.js";
 import Habit from "./Habit.js";
 import ScreenStyle from "../../assets/styles/ScreenStyle.js";
 import MainStyle from "../../assets/styles/MainStyle.js";
+import { AuthContext } from "../../context/auth.js";
 
 
 
 function HabitsPage(props) {
   const { userImage, token} = props;
+  const {user, setUser} = React.useContext(AuthContext)
+
   let [habitAdded, setHabitAdded] = useState(0)
   let [habitLength, setHabitLength] = useState("")
   let [habitsArray, setHabitsArray] = useState([]);
@@ -46,7 +50,7 @@ function HabitsPage(props) {
       <MainStyle>
         <FeedSty>
          <NewHabit token={token} habitAdded={habitAdded} setHabitAdded={setHabitAdded} counter={counter}/>
-         <div>oi</div>
+         {/* <img src={user}/>  */}
           <Habit habitsArray={habitsArray} setHabitsArray={setHabitsArray} token={token} setUpdateDeleted={setUpdateDeleted}/>
           {counter!==0 ? <NoHabit /> : ""  }
           
