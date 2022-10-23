@@ -36,7 +36,7 @@ function TodayPage(props) {
       <MainStyle>
         <FeedSty>
           <TodayBar />
-           {todayList.map((t)=><TodayCard name={t.name} sequence={t.currentSequence} record={t.highestSequence} id={t.id} token={token}/>)} 
+           {todayList.map((t, id)=><TodayCard key={id} name={t.name} sequence={t.currentSequence} record={t.highestSequence} id={t.id} token={token}/>)} 
         </FeedSty>
         <Footer />
       </MainStyle>

@@ -13,7 +13,7 @@ export default function NavBar() {
   return (
     <FooterStyle>
      
-      <p> Hábitos</p>
+      <p onClick={()=>navigate("/habitos")}> Hábitos</p>
       <div onClick={() => navigate("/hoje")}> <ProgressBar /></div>
       <p> Histórico</p>
     </FooterStyle>

@@ -21,16 +21,23 @@ export default function TodayCard(props) {
 
 
 function BoxAction(){
- 
+
+
+if (checkHabits.includes(id)){
+  alert ("ja foi enviado") // fazer requisiçao de delete aqui
+}else {
+
+  setCheckHabits([...checkHabits, id])
+
   axios.post(`https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${id}/check`, config)
   .then((res)=>{
     console.log("enviou check pra api")
-    // setCheckHabits({id}) testar se ta enviadno os habits
+   
   })
   .catch((err)=> console.log(err.data))
   
 
-
+}
 }
 
 
@@ -41,9 +48,10 @@ function BoxAction(){
         <div className="info"> Sequência atual: {sequence} dias</div>
         <div className="info"> Seu recorde: {record} dias</div>
       </div>
-      <div className="check" colorprop="green"  onClick={()=> BoxAction()}>
+      <CheckSty colorprop= {checkHabits.includes(id) ? "#8FC549" : "#E7E7E7"}   
+      onClick={()=> BoxAction()}>
         <IonIcon icon="checkbox"  />
-      </div>
+      </CheckSty>
     </TodayCardSty>
   );
 }
@@ -69,9 +77,11 @@ const TodayCardSty = styled.div`
     margin-top: 4px;
   }
 
-  .check {
-    font-size: 72px;
+`;
+
+
+const CheckSty = styled.div`
+  font-size: 72px;
     color: ${(props) => props.colorprop};
     border-radius: 5px;
-  }
-`;
+`
