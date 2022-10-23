@@ -27,7 +27,7 @@ export default function TodayCard(props) {
       axios.post(`https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${id}/uncheck`, bodyUncheck, config)
       .then(console.log("unchecked"))
       .catch((err) => console.log(err.data))
-  
+      setCheckHabits(checkHabits.filter((item) => item.id !==id));
     } else {
 
       axios
