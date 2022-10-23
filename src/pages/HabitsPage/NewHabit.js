@@ -7,25 +7,23 @@ import AddBar from "./AddBar.js";
 import axios from "axios";
 
 export default function NewHabit(props) {
-  const {setHabitAdded, habitAdded, counter} = props
-  const {user, setUser} = React.useContext(AuthContext)
+  const { setHabitAdded, habitAdded, counter } = props;
+  const { user, setUser } = React.useContext(AuthContext);
   let [newTitle, setNewTitle] = useState("");
   let [newHabitDays, setnewHabitDays] = useState([]);
   let [dayColor, setDayColor] = useState("#ffffff");
-  let [isOpen, setIsOpen] = useState(false)
-  
+  let [isOpen, setIsOpen] = useState(false);
+
   const config = {
     headers: {
-      "Authorization": `Bearer ${user.token}`
-    }
-  }
-  
+      Authorization: `Bearer ${user.token}`,
+    },
+  };
+
   let body = {
-    name:newTitle,
-    days:newHabitDays
-    }
-
-
+    name: newTitle,
+    days: newHabitDays,
+  };
 
   function addDay(wd, id) {
     if (!newHabitDays.includes(id)) {
@@ -37,72 +35,68 @@ export default function NewHabit(props) {
       setnewHabitDays(newAdd);
       setDayColor("#ffffff");
     }
-
   }
 
+  function cancelHabit() {
+    setIsOpen(false);
+  }
 
-
-function cancelHabit(){  
-  setIsOpen(false)
-}
-
-function addHabit(){
-
-
-if(!newTitle || !newHabitDays){
-  alert("Insira hábito e dias válidos.")
-  
-}else{
-
-
-axios.post("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits",
-            body, config)
-            .then(res =>{
-              setNewTitle("")
-              setnewHabitDays("")
-              setIsOpen(false)
-              setHabitAdded(habitAdded+1)
-              counter +=1
-              
-            })
-            .catch((err)=>console.log(err.data))
-  
-}}
-
-
-
-
+  function addHabit() {
+    if (!newTitle|| newHabitDays.length===0)  {
+      alert("Insira hábito e dias válidos.");
+    } else {
+      axios
+        .post(
+          "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits",
+          body,
+          config
+        )
+        .then((res) => {
+          setNewTitle("");
+          setnewHabitDays("");
+          setIsOpen(false);
+          setHabitAdded(habitAdded + 1);
+          counter += 1;
+        })
+        .catch((err) => console.log(err.data));
+    }
+  }
 
   return (
     <>
       <AddBar setIsOpen={setIsOpen} />
-      {isOpen===false ? <div></div> : 
-      <NewHabitSty>
-
-        <input
-          type="text"
-          name="habit"
-          placeholder="nome do hábito"
-          value={newTitle}
-          onChange={(e) => setNewTitle(e.target.value)}
-        />
-        <div className="weekday-container">
-          {WEEKDAYS.map((wd, id) => (
-            <WeekDay
-              colorprop={newHabitDays.includes(id) ? "#e8e8e8" : "#ffffff"}
-              wd={wd}
-              id={id}
-              key={id}
-              onClick={() => addDay(wd, id)}
-            >
-              {wd}
-            </WeekDay>
-          ))}
-        </div>
-        <button className="cancel" onClick={()=>cancelHabit()}>Cancelar</button>
-        <button className="save" onClick={()=> addHabit()}>Salvar</button>
-      </NewHabitSty>
-      }
+      {isOpen === false ? (
+        <div></div>
+      ) : (
+        <NewHabitSty>
+          <input
+            type="text"
+            name="habit"
+            placeholder="nome do hábito"
+            value={newTitle}
+            onChange={(e) => setNewTitle(e.target.value)}
+          />
+          <div className="weekday-container">
+            {WEEKDAYS.map((wd, id) => (
+              <WeekDay
+                colorprop={newHabitDays.includes(id) ? "#e8e8e8" : "#ffffff"}
+                wd={wd}
+                id={id}
+                key={id}
+                onClick={() => addDay(wd, id)}
+              >
+                {wd}
+              </WeekDay>
+            ))}
+          </div>
+          <button className="cancel" onClick={() => cancelHabit()}>
+            Cancelar
+          </button>
+          <button className="save" onClick={() => addHabit()}>
+            Salvar
+          </button>
+        </NewHabitSty>
+      )}
     </>
   );
 }
@@ -114,7 +108,7 @@ const NewHabitSty = styled.div`
   left: 17px;
   top: 147px;
   border-radius: 5px;
-  box-shadow: 0px 1px 4px 1px rgba(0,0,0,0.15);
+  box-shadow: 0px 1px 4px 1px rgba(0, 0, 0, 0.15);
 
   input {
     box-sizing: border-box;
