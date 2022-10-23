@@ -26,7 +26,7 @@ function TodayPage(props) {
    axios.get("https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/today", config)
    .then((res)=>{
    setTodayList(res.data)
-  console.log(res.data.filter((x)=>x.done===true))
+  setHabitosFeitos(res.data.filter((x)=>x.done===true))
     // calculate()
    
   })
@@ -41,7 +41,7 @@ function TodayPage(props) {
 
 
 useEffect(()=>{
-setResult(todayList.length)
+setResult((habitosFeitos.length*100)/todayList.length)
 
 
 })
