@@ -5,9 +5,8 @@ export default function NoHabit() {
   return (
     <NoHabitSty>
       <TextSty>
-        {" "}
         Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para
-        começar a trackear!{" "}
+        começar a trackear!
       </TextSty>
     </NoHabitSty>
   );

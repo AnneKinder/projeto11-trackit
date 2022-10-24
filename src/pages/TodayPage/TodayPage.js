@@ -20,8 +20,8 @@ function TodayPage() {
 
   const config = {
     headers: {
-      Authorization: `Bearer ${user.token}`
-    }
+      Authorization: `Bearer ${user.token}`,
+    },
   };
 
   useEffect(() => {

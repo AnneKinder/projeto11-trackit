@@ -3,7 +3,6 @@ import NavBar from "../../components/NavBar.js";
 import Footer from "../../components/Footer.js";
 import ScreenStyle from "../../assets/styles/ScreenStyle.js";
 import MainStyle from "../../assets/styles/MainStyle.js";
-import TextSty from "../../assets/styles/TextSty";
 import BlueTitle from "../../assets/styles/BlueTitle.js";
 
 function HistoryPage() {
