@@ -1,32 +1,22 @@
 import React from "react";
 import styled from "styled-components";
 import TextSty from "../../assets/styles/TextSty";
-import { IonIcon } from "@ionic/react";
-import { useState } from "react";
-import { Checkbox } from "react-ionicons";
+import { IonIcon } from "@ionic/react"
 import { AuthContext } from "../../context/auth";
 import axios from "axios";
 
 export default function TodayCard(props) {
-  const {
-    name,
-    sequence,
-    record,
-    id,
-    isDone,
-    checkHabits,
-    setCheckHabits
-  } = props;
+  const { name, sequence, record, id, isDone, checkHabits, setCheckHabits } =
+    props;
   const { user, setUser } = React.useContext(AuthContext);
-  const [sequenceColor, setSequenceColor] = useState("#666666");
 
   let bodyCheck = { done: true };
   let bodyUncheck = { done: false };
 
   const config = {
     headers: {
-      Authorization: `Bearer ${user.token}`
-    }
+      Authorization: `Bearer ${user.token}`,
+    },
   };
 
   function BoxAction() {
@@ -58,23 +48,16 @@ export default function TodayCard(props) {
     <TodayCardSty>
       <div className="left">
         <TextSty> {name}</TextSty>
-        {/* {sequence === record ? "#8FC549" : "#666666"} 
-      {isDone === true ? "red" : "blue"}
-      */}
         <div className="info">
-          {" "}
-          Sequência atual:{" "}
+          Sequência atual:
           <SequenceSty sequenceprop={isDone === true ? "#8FC549" : "#666666"}>
-            {" "}
-            {sequence} dias{" "}
-          </SequenceSty>{" "}
+            {sequence} dias
+          </SequenceSty>
         </div>
         <div className="info">
-          {" "}
-          Seu recorde:{" "}
+          Seu recorde:
           <RecordSty recordprop={sequence === record ? "#8FC549" : "#666666"}>
-            {" "}
-            {record} dias{" "}
+            {record} dias
           </RecordSty>
         </div>
       </div>
@@ -116,12 +99,6 @@ const CheckSty = styled.div`
   color: ${(props) => props.colorprop};
   border-radius: 5px;
 `;
-
-// const SequenceSty = styled.p`
-//   color: green;
-// `;
-
-// const RecordSty = styled.p``;
 
 const SequenceSty = styled.p`
   font-family: "Lexend Deca";

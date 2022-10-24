@@ -12,13 +12,12 @@ export default function TodayBar() {
   const todayWeek = date.getDay();
   const [today, setToday] = useState({
     day: DAYNAME[todayWeek],
-    date: todayDate
+    date: todayDate,
   });
 
   return (
     <TodayBarSty>
       <BlueTitle>
-        {" "}
         {today.day}, {today.date}
       </BlueTitle>
 

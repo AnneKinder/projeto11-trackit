@@ -13,7 +13,7 @@ export default function NewHabit(props) {
   const [newHabitDays, setnewHabitDays] = useState([]);
   const [dayColor, setDayColor] = useState("#ffffff");
   const [isOpen, setIsOpen] = useState(false);
-  const [disabled, setDisabled] = useState(false)
+  const [disabled, setDisabled] = useState(false);
 
   const config = {
     headers: {
@@ -43,15 +43,11 @@ export default function NewHabit(props) {
   }
 
   function addHabit() {
-
-    if (!newTitle|| newHabitDays.length===0)  {
+    if (!newTitle || newHabitDays.length === 0) {
       alert("Insira hábito e dias válidos.");
-
     } else {
+      setDisabled(true);
 
-      setDisabled(true)
-  
-      
       axios
         .post(
           "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits",
@@ -64,10 +60,10 @@ export default function NewHabit(props) {
           setIsOpen(false);
           setHabitAdded(habitAdded + 1);
           counter += 1;
-          setDisabled(false)
+          setDisabled(false);
         })
         .catch((err) => console.log(err.data));
-        setDisabled(false)
+      setDisabled(false);
     }
   }
 
@@ -100,10 +96,18 @@ export default function NewHabit(props) {
               </WeekDay>
             ))}
           </div>
-          <button className="cancel" onClick={() => cancelHabit()} disabled={disabled}>
+          <button
+            className="cancel"
+            onClick={() => cancelHabit()}
+            disabled={disabled}
+          >
             Cancelar
           </button>
-          <button className="save" onClick={() => addHabit()} disabled={disabled}>
+          <button
+            className="save"
+            onClick={() => addHabit()}
+            disabled={disabled}
+          >
             Salvar
           </button>
         </NewHabitSty>
