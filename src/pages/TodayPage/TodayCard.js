@@ -56,7 +56,13 @@ export default function TodayCard(props) {
         </div>
         <div className="info">
           Seu recorde:
-          <RecordSty recordprop={sequence === record ? "#8FC549" : "#666666"}>
+          <RecordSty recordprop={
+              record !== 0
+                ? sequence === record
+                  ? "#8FC549"
+                  : "#666666"
+                : "#666666"
+            }>
             {record} dias
           </RecordSty>
         </div>
