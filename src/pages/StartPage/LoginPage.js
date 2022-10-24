@@ -34,8 +34,7 @@ function LoginPage() {
         setDisabled(false);
       })
       .catch((err) => {
-        alert(err.data);
-        console.log(err.message);
+        alert(err.response.data.message);
         setDisabled(false);
       });
   }
