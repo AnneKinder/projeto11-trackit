@@ -8,7 +8,7 @@ const StartStyle = styled.div`
   flex-direction: column;
   align-items: center;
   font-family: "Lexend Deca", sans-serif;
-  margin: 75px 0 199px 0;
+  padding: 50px 0 100px 0;
 
   img {
     width: 280px;
@@ -41,7 +41,6 @@ const StartStyle = styled.div`
     left: 36px;
     top: 381px;
     background: ${props=>props.buttoncolor};
-    /* #52b6ff; */
     border-radius: 4.63636px;
     font-weight: 400;
     font-size: 20.976px;

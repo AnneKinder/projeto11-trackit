@@ -87,7 +87,7 @@ function SignUpPage(props) {
         />
         <button type="submit" disabled={disabled}> Cadastrar </button>
       </form>
-      <p> Já tem uma conta? Faça login! </p>
+      <p onClick={() => navigate("/")}> Já tem uma conta? Faça login! </p>
     </StartStyle>
   );
 }

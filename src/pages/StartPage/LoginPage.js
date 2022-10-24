@@ -84,7 +84,7 @@ const LoginStyle = styled.div`
   flex-direction: column;
   align-items: center;
   font-family: "Lexend Deca", sans-serif;
-  margin: 75px 0 199px 0;
+  padding: 50px 0 100px 0;
 
   img {
     width: 280px;

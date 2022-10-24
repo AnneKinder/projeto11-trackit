@@ -3,11 +3,8 @@ import { useNavigate } from "react-router-dom";
 import ProgressBar from "./ProgressBar.js"
 
 
-
 export default function NavBar() {
   const navigate = useNavigate();
-
-
 
 
   return (
