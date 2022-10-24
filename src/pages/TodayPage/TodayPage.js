@@ -8,11 +8,11 @@ import TodayBar from "./TodayBar.js";
 import TodayCard from "./TodayCard.js";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import {AuthContext} from "../../context/auth.js"
+import { AuthContext } from "../../context/auth.js";
 
 function TodayPage() {
-  const {user, setUser} = React.useContext(AuthContext)
-  const {result, setResult} = React.useContext(AuthContext)
+  const { user, setUser } = React.useContext(AuthContext);
+  const { result, setResult } = React.useContext(AuthContext);
 
   let [todayList, setTodayList] = useState([]);
   let [checkHabits, setCheckHabits] = useState([]);
@@ -20,11 +20,10 @@ function TodayPage() {
 
   const config = {
     headers: {
-      Authorization: `Bearer ${user.token}`,
-    },
+      Authorization: `Bearer ${user.token}`
+    }
   };
-  
-  
+
   useEffect(() => {
     axios
       .get(
@@ -44,10 +43,11 @@ function TodayPage() {
 
   return (
     <ScreenStyle>
-      <NavBar/>
+      <NavBar />
       <MainStyle>
         <FeedSty>
-          <TodayBar result={result}/>
+          <TodayBar result={result} />
+
           {todayList.map((t, i) => (
             <TodayCard
               key={i}

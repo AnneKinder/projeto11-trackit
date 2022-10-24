@@ -30,6 +30,7 @@ const NavbarStyle = styled.div`
   align-items: center;
   justify-content: center;
   padding: 0 20px;
+  z-index:2;
 
   p {
     font-family: "Playball";
