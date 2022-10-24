@@ -17,8 +17,6 @@ import { AuthContext } from "../../context/auth.js";
 function HabitsPage() {
   const {user, setUser} = React.useContext(AuthContext)
   const {habitsArray, setHabitsArray} = React.useContext(AuthContext)
-
-
   const [habitAdded, setHabitAdded] = useState(0)
   const [habitLength, setHabitLength] = useState("")
   const [updateDeleted, setUpdateDeleted] = useState(false)

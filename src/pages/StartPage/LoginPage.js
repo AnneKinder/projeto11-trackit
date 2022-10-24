@@ -1,29 +1,27 @@
 import React from "react";
 import styled from "styled-components";
-import {AuthContext} from "../../context/auth.js"
-import { useState} from "react";
+import { AuthContext } from "../../context/auth.js";
+import { useState } from "react";
 import axios from "axios";
 import logo from "../../assets/img/logo.png";
 import { useNavigate } from "react-router-dom";
-import { ColorFill } from "react-ionicons";
 
 function LoginPage() {
   const navigate = useNavigate();
-  const {user, setUser} = React.useContext(AuthContext)
+  const { user, setUser } = React.useContext(AuthContext);
   const [email, setMail] = useState("");
   const [password, setPassword] = useState("");
   const [disabled, setDisabled] = useState("");
 
   let body = {
     email: email,
-    password: password
+    password: password,
   };
 
   function sendData(e) {
     e.preventDefault();
 
-    setDisabled(true)
-
+    setDisabled(true);
 
     axios
       .post(
@@ -31,25 +29,22 @@ function LoginPage() {
         body
       )
       .then((res) => {
-        setUser(res.data)
+        setUser(res.data);
         navigate("/hoje");
         setDisabled(false);
-        
       })
       .catch((err) => {
         alert(err.data);
-        console.log(err.message)
+        console.log(err.message);
         setDisabled(false);
-        
       });
   }
 
-
-
   return (
-    <LoginStyle buttoncolor={disabled===true ? "#D4D4D4" : "#52b6ff"} inputcolor={disabled===true ? "#D4D4D4" : "#FFFFFF"} >
-     
-     {/*  */}
+    <LoginStyle
+      buttoncolor={disabled === true ? "#D4D4D4" : "#52b6ff"}
+      inputcolor={disabled === true ? "#D4D4D4" : "#FFFFFF"}
+    >
       <img src={logo} alt="logo" />
       <form onSubmit={sendData}>
         <input
@@ -70,14 +65,12 @@ function LoginPage() {
           required
           disabled={disabled}
         />
-        <button  type="submit" disabled={disabled}>
-          {" "}
-          Entrar{" "}
+        <button type="submit" disabled={disabled}>
+          Entrar
         </button>
       </form>
       <p onClick={() => navigate("/cadastro")}>
-        {" "}
-        Não tem uma conta? Cadastre-se!{" "}
+        Não tem uma conta? Cadastre-se!
       </p>
     </LoginStyle>
   );
@@ -107,7 +100,7 @@ const LoginStyle = styled.div`
     height: 45px;
     left: 36px;
     top: 279px;
-    background-color: ${props=> props.inputcolor}; 
+    background-color: ${(props) => props.inputcolor};
     border: 1px solid #d5d5d5;
     border-radius: 5px;
     font-weight: 400;
@@ -123,8 +116,7 @@ const LoginStyle = styled.div`
     height: 45px;
     left: 36px;
     top: 381px;
-    background: ${props=> props.buttoncolor};
-    /* #52b6ff */
+    background: ${(props) => props.buttoncolor};
     border-radius: 4.63636px;
     font-weight: 400;
     font-size: 20.976px;
